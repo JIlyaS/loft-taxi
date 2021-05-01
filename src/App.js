@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import MapPage from './pages/MapPage';
+import ProfilePage from './pages/ProfilePage';
+
 import './App.css';
 
-function App() {
+const App = () => {
+  const [page, setPage] = useState('login');
+  console.log("🚀 ~ file: App.js ~ line 12 ~ App ~ page", page)
+
+  const pageObj = {
+    login: <LoginPage onSetPage={setPage} />,
+    register: <RegisterPage onSetPage={setPage} />,
+    map: <MapPage onSetPage={setPage} />,
+    profile: <ProfilePage onSetPage={setPage} /> 
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      {pageObj[page]}
     </div>
   );
 }
