@@ -43,3 +43,7 @@
 .header__nav-link:hover {
   color: var(--second-color);
 }
+
+.header__nav-link--active {
+  color: var(--second-color);
+}

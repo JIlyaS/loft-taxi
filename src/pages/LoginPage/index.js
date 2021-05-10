@@ -1,11 +1,14 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import LoginForm from '../../components/LoginForm';
 import logo from '../../assets/images/logo-auth.svg';
 import './style.css';
 
-const LoginPage = ({ onSetPage }) => {
+const LoginPage = ({ navigateTo }) => {
 
   const handleLoginFormSubmit = (page) => {
-    onSetPage(page);
+    navigateTo(page);
   }
   
   return (
@@ -20,4 +23,10 @@ const LoginPage = ({ onSetPage }) => {
   );
 }
 
+LoginPage.propTypes = {
+  navigateTo: PropTypes.func.isRequired,
+}
+
 export default LoginPage;
+
+export {LoginPage};

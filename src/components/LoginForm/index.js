@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+
+import {AuthContext} from '../../context/AuthContext';
 
 import './style.css';
 
@@ -29,14 +32,22 @@ const LoginForm = ({ onLoginForm }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const context = useContext(AuthContext);
+
   const handleRegisterClick = (evt) => {
     evt.preventDefault();
     onLoginForm('register')
   };
 
+  const handleLoginSubmit = (evt) => {
+    evt.preventDefault();
+    onLoginForm('map');
+    context.login(email, password);
+  };
+
   return (
     <div className="login-form">
-      <form onSubmit={() => onLoginForm('map')}>
+      <form onSubmit={handleLoginSubmit}>
         <h2 className="login-form__title">Войти</h2>
         <div className="login-form__block">
           <CssTextField 
@@ -90,4 +101,10 @@ const LoginForm = ({ onLoginForm }) => {
   );
 }
 
+LoginForm.propTypes = {
+  onLoginForm: PropTypes.func.isRequired,
+}
+
 export default LoginForm;
+
+export {LoginForm};

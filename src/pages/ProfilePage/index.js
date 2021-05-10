@@ -1,16 +1,17 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import Header from '../../components/Header';
 
 import './style.css';
 
-const ProfilePage = ({onSetPage}) => {
+const ProfilePage = ({page, navigateTo}) => {
   const handleSetPageClick = (page) => {
-    onSetPage(page);
+    navigateTo(page);
   };
   return (
     <Fragment>
-      <Header onSetPage={handleSetPageClick} />
+      <Header page={page} navigateTo={handleSetPageClick} />
       <main className="main-page">
         Profile
       </main>
@@ -18,4 +19,11 @@ const ProfilePage = ({onSetPage}) => {
   );
 }
 
+ProfilePage.propTypes = {
+  page: PropTypes.string.isRequired,
+  navigateTo: PropTypes.func.isRequired,
+}
+
 export default ProfilePage;
+
+export {ProfilePage};
