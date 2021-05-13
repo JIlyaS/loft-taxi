@@ -12,7 +12,7 @@ const RegisterPage = ({ navigateTo }) => {
   }
   
   return (
-    <div className="login-page">
+    <div className="login-page" data-testid="login-page">
       <div className="login-page__left">
         <img className="login-page__logo" src={logo} alt="Логотип" />
       </div>

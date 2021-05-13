@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProfilePage renders correctly 1`] = `
+exports[`ProfilePage renders correctly snapshot 1`] = `
 Array [
   <header
     className="header"
@@ -41,6 +41,7 @@ Array [
         >
           <a
             className="header__nav-link"
+            data-testid="logout"
             onClick={[Function]}
           >
             Выйти

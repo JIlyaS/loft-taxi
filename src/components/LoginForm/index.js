@@ -36,7 +36,7 @@ const LoginForm = ({ onLoginForm }) => {
 
   const handleRegisterClick = (evt) => {
     evt.preventDefault();
-    onLoginForm('register')
+    onLoginForm('register');
   };
 
   const handleLoginSubmit = (evt) => {

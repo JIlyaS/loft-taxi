@@ -1,12 +1,15 @@
-import React from 'react';
 import {ProfilePage} from './';
 import renderer from 'react-test-renderer';
-
-// jest.mock('../../components/Header', () => ({ Header: () => <div/>}));
+import {render} from '@testing-library/react';
 
 describe('ProfilePage', () => {
-  it('renders correctly', () => {
+  it('renders correctly snapshot', () => {
       const tree = renderer.create(<ProfilePage  page="profile" navigateTo={() => {}} />).toJSON();
       expect(tree).toMatchSnapshot();
+    });
+
+    it('renders correctly', () => {
+      const {getByText} = render(<ProfilePage  page="profile" navigateTo={() => {}} />);
+      expect(getByText('Profile')).toBeInTheDocument();
     });
 });

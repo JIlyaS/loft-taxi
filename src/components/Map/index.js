@@ -9,7 +9,7 @@ class Map extends PureComponent {
   mapContainer = React.createRef();
 
   componentDidMount() {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiamlseWFzIiwiYSI6ImNrYTJxcGw2NTBjdGYza3Awdmx3YXlnemgifQ.zg5oZ5IIeUoLMIrx0LD_mw';
+    mapboxgl.accessToken = process.env.REACT_APP_MAPBOXGL_ACCESS_TOKEN;
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/light-v10',
@@ -25,7 +25,7 @@ class Map extends PureComponent {
   render() {
     return (
       <div className="map">
-        <div data-testid="map" className="map__component" ref={el => this.mapContainer = el} />
+        <div className="map__component" data-testid="map" ref={el => this.mapContainer = el} />
       </div>
     );
   }

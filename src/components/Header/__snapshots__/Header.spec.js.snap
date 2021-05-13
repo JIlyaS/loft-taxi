@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header renders correctly 1`] = `
+exports[`Header renders correctly spanshot 1`] = `
 <header
   className="header"
 >
@@ -40,6 +40,7 @@ exports[`Header renders correctly 1`] = `
       >
         <a
           className="header__nav-link"
+          data-testid="logout"
           onClick={[Function]}
         >
           Выйти
