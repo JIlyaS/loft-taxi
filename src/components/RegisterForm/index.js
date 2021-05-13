@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+
+import {AuthContext} from '../../context/AuthContext';
 
 import './style.css';
 
@@ -30,14 +33,22 @@ const RegisterForm = ({ onRegisterForm }) => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
 
-  const handleRegisterClick = (evt, page) => {
+  const context = useContext(AuthContext);
+
+  const handleLoginClick = (evt) => {
     evt.preventDefault();
-    onRegisterForm(page)
+    onRegisterForm('login')
+  };
+
+  const handleRegisterSubmit = (evt) => {
+    evt.preventDefault();
+    context.login(email, password);
+    onRegisterForm('map');
   };
 
   return (
     <div className="login-form">
-      <form onSubmit={(evt) => handleRegisterClick(evt, 'map')}>
+      <form onSubmit={handleRegisterSubmit}>
         <h2 className="login-form__title">Регистрация</h2>
         <div className="login-form__block">
           <CssTextField 
@@ -95,11 +106,15 @@ const RegisterForm = ({ onRegisterForm }) => {
         </CssButton>
         <div className="login-form__new-block">
           <span className="login-form__new-text">Уже зарегестрированны?</span>
-          <a className="login-form__reg" href="/" onClick={(evt) => handleRegisterClick(evt, 'login')}>Войти</a>
+          <a className="login-form__reg" href="/" onClick={handleLoginClick}>Войти</a>
         </div>
       </form>
     </div>
   );
+}
+
+RegisterForm.propTypes = {
+  onRegisterForm: PropTypes.func.isRequired,
 }
 
 export default RegisterForm;

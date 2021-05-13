@@ -1,11 +1,14 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import RegisterForm from '../../components/RegisterForm';
 import logo from '../../assets/images/logo-auth.svg';
 import './style.css';
 
-const RegisterPage = ({ onSetPage }) => {
+const RegisterPage = ({ navigateTo }) => {
 
   const handleRegisterFormSubmit = (page) => {
-    onSetPage(page);
+    navigateTo(page);
   }
   
   return (
@@ -20,4 +23,10 @@ const RegisterPage = ({ onSetPage }) => {
   );
 }
 
+RegisterPage.propTypes = {
+  navigateTo: PropTypes.func.isRequired,
+}
+
 export default RegisterPage;
+
+export {RegisterPage};
