@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RegisterForm renders correctly 1`] = `
+exports[`RegisterForm renders correctly spanshot 1`] = `
 <div
   className="login-form"
 >

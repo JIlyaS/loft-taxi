@@ -41,6 +41,7 @@ Array [
         >
           <a
             className="header__nav-link"
+            data-testid="logout"
             onClick={[Function]}
           >
             Выйти
@@ -51,6 +52,7 @@ Array [
   </header>,
   <main
     className="main-page"
+    data-testId="main"
   >
     <div
       className="map"

@@ -34,12 +34,22 @@ const Header = ({page, navigateTo}) => {
           {
             headerList.map((item) => (
               <li className="header__nav-item" key={item.id}>
-                <a className={cn('header__nav-link', page === item.id && 'header__nav-link--active')} onClick={(evt) => handleHeaderClick(evt, item.id)}>{ item.name }</a>
+                <a 
+                  className={cn('header__nav-link', page === item.id && 'header__nav-link--active')} 
+                  onClick={(evt) => handleHeaderClick(evt, item.id)}
+                >
+                  { item.name }
+                </a>
               </li>
             ))
           }
           <li className="header__nav-item" key="login">
-            <a className={cn('header__nav-link', page === "login" && 'header__nav-link--active')} onClick={(evt) => handleLogoutBtnClick(evt)}>Выйти</a>
+            <a 
+              className={cn('header__nav-link', page === "login" && 'header__nav-link--active')} 
+              data-testid='logout' 
+              onClick={(evt) => handleLogoutBtnClick(evt)}>
+                Выйти
+            </a>
           </li>
         </ul>
       </nav>

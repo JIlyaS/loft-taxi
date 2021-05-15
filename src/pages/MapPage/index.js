@@ -13,7 +13,7 @@ const MapPage = ({ page, navigateTo }) => {
   return (
     <Fragment>
       <Header page={page} navigateTo={handleSetPageClick} />
-      <main className="main-page">
+      <main className="main-page" data-testId="main">
         <Map />
       </main>
     </Fragment>
