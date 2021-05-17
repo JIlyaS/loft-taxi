@@ -1,11 +1,13 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import {AuthContext} from '../../context/AuthContext';
+import { fetchLoginRequest } from '../../modules/auth/actions';
 
 import './style.css';
 
@@ -28,21 +30,13 @@ const CssButton = withStyles({
   },
 })(Button);
 
-const LoginForm = ({ onLoginForm }) => {
+const LoginForm = ({fetchLoginRequestAction}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const context = useContext(AuthContext);
-
-  const handleRegisterClick = (evt) => {
-    evt.preventDefault();
-    onLoginForm('register');
-  };
-
   const handleLoginSubmit = (evt) => {
     evt.preventDefault();
-    onLoginForm('map');
-    context.login(email, password);
+    fetchLoginRequestAction({email, password});
   };
 
   return (
@@ -94,7 +88,7 @@ const LoginForm = ({ onLoginForm }) => {
         </CssButton>
         <div className="login-form__new-block">
           <span className="login-form__new-text">Новый пользователь?</span>
-          <a className="login-form__reg" href="/" onClick={handleRegisterClick}>Регистрация</a>
+          <Link className="login-form__reg" to="/register">Регистрация</Link>
         </div>
       </form>
     </div>
@@ -102,9 +96,11 @@ const LoginForm = ({ onLoginForm }) => {
 }
 
 LoginForm.propTypes = {
-  onLoginForm: PropTypes.func.isRequired,
+  fetchLoginRequestAction: PropTypes.func.isRequired,
 }
 
-export default LoginForm;
+export default connect(null, {
+  fetchLoginRequestAction: fetchLoginRequest,
+})(LoginForm);
 
 export {LoginForm};

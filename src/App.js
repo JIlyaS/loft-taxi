@@ -1,46 +1,43 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React from 'react';
+import {connect} from 'react-redux';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import MapPage from './pages/MapPage';
 import ProfilePage from './pages/ProfilePage';
-
-import { withAuth } from './hocs/Auth';
-import {AuthContext} from './context/AuthContext';
+import PageNotFound from './pages/PageNotFound';
+import PrivateRoute from './utils/PrivateRoute';
 
 import './App.css';
 
-const App = (props) => {
-  const [page, setPage] = useState('map');
-  const context = useContext(AuthContext);
-
-  useEffect(() => {
-    if (!context.isLoggedIn) {
-      if (page === 'register' || page === 'login') {
-        setPage(page);
-      } else {
-        setPage('login');
-      }
-    }
-  }, [context.isLoggedIn, page]);
-
-
-  const navigateTo = (page) => {
-    setPage(page);
-  }
-
-  const pageObj = {
-    login: <LoginPage navigateTo={navigateTo} />,
-    register: <RegisterPage navigateTo={navigateTo} />,
-    map: <MapPage navigateTo={navigateTo} page={page} />,
-    profile: <ProfilePage navigateTo={navigateTo} page={page} /> 
-  }
-
+const App = ({isLoggedIn}) => {
   return (
     <div className="app">
-      {pageObj[page]}
+      <Switch>
+        <PrivateRoute path="/" component={MapPage} exact />
+        <PrivateRoute path="/profile" component={ProfilePage} />
+        {/* <Route path="/login" component={LoginPage} /> */}
+        {/* <Route path="/register" component={RegisterPage} /> */}
+        <Route path="/login">
+          {isLoggedIn ? <Redirect to="/" /> : <LoginPage />}
+        </Route>
+        <Route path="/register">
+          {
+            isLoggedIn ? <Redirect to="/" /> : <RegisterPage />
+          }
+        </Route>
+        <Route path="*" component={PageNotFound} />
+        <Redirect to="/" />
+      </Switch>
     </div>
   );
 }
 
-export default withAuth(App);
+const mapStateToProps = ({auth}) => {
+  return {
+    isLoggedIn: auth.isLoggedIn,
+  }
+}
+
+export default connect(mapStateToProps)(App);

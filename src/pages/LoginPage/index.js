@@ -1,31 +1,27 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import LoginForm from '../../components/LoginForm';
 import logo from '../../assets/images/logo-auth.svg';
 import './style.css';
 
-const LoginPage = ({ navigateTo }) => {
-
-  const handleLoginFormSubmit = (page) => {
-    navigateTo(page);
-  }
+const LoginPage = () => {
   
   return (
-    <div className="login-page" data-testid="login-page">
+    <div className="login-page" data-testId="login-page">
       <div className="login-page__left">
         <img className="login-page__logo" src={logo} alt="Логотип" />
       </div>
       <div className="login-page__right">
-        <LoginForm onLoginForm={handleLoginFormSubmit} />
+        <LoginForm />
       </div>
     </div>
   );
 }
 
-LoginPage.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
-}
+// LoginPage.propTypes = {
+//   navigateTo: PropTypes.func.isRequired,
+// }
 
 export default LoginPage;
 

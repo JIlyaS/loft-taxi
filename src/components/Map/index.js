@@ -25,7 +25,7 @@ class Map extends PureComponent {
   render() {
     return (
       <div className="map">
-        <div className="map__component" data-testid="map" ref={el => this.mapContainer = el} />
+        <div className="map__component" data-testId="map" ref={el => this.mapContainer = el} />
       </div>
     );
   }

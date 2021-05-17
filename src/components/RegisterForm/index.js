@@ -1,11 +1,13 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import {AuthContext} from '../../context/AuthContext';
+import { fetchRegisterRequest } from '../../modules/auth/actions';
 
 import './style.css';
 
@@ -28,22 +30,14 @@ const CssButton = withStyles({
   },
 })(Button);
 
-const RegisterForm = ({ onRegisterForm }) => {
+const RegisterForm = ({fetchRegisterRequestAction}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-
-  const context = useContext(AuthContext);
-
-  const handleLoginClick = (evt) => {
-    evt.preventDefault();
-    onRegisterForm('login')
-  };
+  const [userName, setUserName] = useState('');
 
   const handleRegisterSubmit = (evt) => {
     evt.preventDefault();
-    context.login(email, password);
-    onRegisterForm('map');
+    fetchRegisterRequestAction({email, password, userName});
   };
 
   return (
@@ -69,12 +63,12 @@ const RegisterForm = ({ onRegisterForm }) => {
           <CssTextField 
             label="Как вас зовут?" 
             id="name" 
-            value={name} 
+            value={userName} 
             name="name"
             placeholder="Петр Александрович" 
             size="small"
             margin="dense"
-            onChange={(evt) => setName(evt.target.value)}
+            onChange={(evt) => setUserName(evt.target.value)}
             fullWidth
             required
           />
@@ -106,7 +100,7 @@ const RegisterForm = ({ onRegisterForm }) => {
         </CssButton>
         <div className="login-form__new-block">
           <span className="login-form__new-text">Уже зарегестрированны?</span>
-          <a className="login-form__reg" href="/" onClick={handleLoginClick}>Войти</a>
+          <Link className="login-form__reg" to="/login">Войти</Link>
         </div>
       </form>
     </div>
@@ -114,7 +108,11 @@ const RegisterForm = ({ onRegisterForm }) => {
 }
 
 RegisterForm.propTypes = {
-  onRegisterForm: PropTypes.func.isRequired,
+  fetchRegisterRequestAction: PropTypes.func.isRequired,
 }
 
-export default RegisterForm;
+export default connect(null, {
+  fetchRegisterRequestAction: fetchRegisterRequest,
+})(RegisterForm);
+
+export {RegisterForm};

@@ -40,7 +40,7 @@ exports[`Header renders correctly spanshot 1`] = `
       >
         <a
           className="header__nav-link"
-          data-testid="logout"
+          data-testId="logout"
           onClick={[Function]}
         >
           Выйти

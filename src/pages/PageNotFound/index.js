@@ -1,19 +1,13 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 // import PropTypes from 'prop-types';
-
-import Header from '../../components/Header';
-import Map from '../../components/Map';
 
 import './style.css';
 
-const MapPage = () => {
+const PageNotFound = () => {
   return (
-    <Fragment>
-      <Header />
       <main className="main-page" data-testId="main">
-        <Map />
+        Страница не найдена
       </main>
-    </Fragment>
   );
 }
 
@@ -22,6 +16,6 @@ const MapPage = () => {
 //   navigateTo: PropTypes.func.isRequired,
 // }
 
-export default MapPage;
+export default PageNotFound;
 
-export {MapPage};
+export {PageNotFound};
