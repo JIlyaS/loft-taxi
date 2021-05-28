@@ -1,0 +1,27 @@
+.profile-content {
+  width: 888px;
+  height: 588px;
+  padding: 59px 44px 67px;
+  background-color: var(--white);
+  box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.profile-content__header {
+  margin: 0;
+  margin-bottom: 13px;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 42px;
+
+  text-align: center;
+}
+
+.profile-content__paragraph {
+  margin: 0;
+  margin-bottom: 50px;
+  font-size: 18px;
+  line-height: 21px;
+  color: #7B7B7B;
+  text-align: center;
+}

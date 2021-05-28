@@ -1,3 +1,15 @@
-.main-page {
+.profile-page {
   margin-top: 102px;
+}
+
+.profile-page__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: calc(100vh - 102px);
+  background: linear-gradient(0deg, rgba(28, 26, 25, 0.5), rgba(28, 26, 25, 0.5)), url('../../assets/images/map.jpg') no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* filter: brightness(40%); */
 }

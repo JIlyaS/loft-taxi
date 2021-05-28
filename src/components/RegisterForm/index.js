@@ -2,23 +2,13 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import Input from '../Input';
 import { fetchRegisterRequest } from '../../modules/auth/actions';
 
 import './style.css';
-
-const CssTextField = withStyles({
-  root: {
-    '& label.Mui-focused': {
-      color: '#000',
-      fontWeight: '500',
-    }
-  },
-})(TextField);
 
 const CssButton = withStyles({
   root: {
@@ -44,50 +34,37 @@ const RegisterForm = ({fetchRegisterRequestAction}) => {
     <div className="login-form">
       <form onSubmit={handleRegisterSubmit}>
         <h2 className="login-form__title">Регистрация</h2>
-        <div className="login-form__block">
-          <CssTextField 
-            label="Email" 
-            id="email" 
-            value={email} 
-            name="email"
-            placeholder="mail@mail.ru" 
-            size="small"
-            margin="dense"
-            onChange={(evt) => setEmail(evt.target.value)}
-            fullWidth
-            required
-            autoFocus
-          />
-        </div>
-        <div className="login-form__block">
-          <CssTextField 
-            label="Как вас зовут?" 
-            id="name" 
-            value={userName} 
-            name="name"
-            placeholder="Петр Александрович" 
-            size="small"
-            margin="dense"
-            onChange={(evt) => setUserName(evt.target.value)}
-            fullWidth
-            required
-          />
-        </div>
-        <div className="login-form__block">
-          <CssTextField  
-            label="Пароль" 
-            id="password" 
-            value={password} 
-            name="password"
-            type="password"
-            placeholder="************" 
-            size="small"
-            margin="dense"
-            onChange={(evt) => setPassword(evt.target.value)}
-            fullWidth
-            required
-          />
-        </div>
+        <Input 
+          type="email"
+          name="email" 
+          label="Email" 
+          placeholder="mail@mail.ru"
+          value={email} 
+          classNameWrap="login-form__block" 
+          onChange={(evt) => setEmail(evt.target.value)}
+          isAutofocus
+          isRequired
+        />
+        <Input 
+          type="text"
+          name="name" 
+          label="Как вас зовут?" 
+          placeholder="Петр Александрович"
+          value={userName} 
+          classNameWrap="login-form__block" 
+          onChange={(evt) => setUserName(evt.target.value)}
+          isRequired
+        />
+        <Input 
+          type="password"
+          name="password" 
+          label="Пароль" 
+          placeholder="************"
+          value={password} 
+          classNameWrap="login-form__block" 
+          onChange={(evt) => setPassword(evt.target.value)}
+          isRequired
+        />
         <CssButton 
           className="login-form__login-btn" 
           type="submit" 

@@ -2,15 +2,18 @@ import React, { Fragment } from 'react';
 // import PropTypes from 'prop-types';
 
 import Header from '../../components/Header';
+import ProfileContent from '../../components/ProfileContent';
 
 import './style.css';
 
-const ProfilePage = ({page, navigateTo}) => {
+const ProfilePage = () => {
   return (
     <Fragment>
       <Header />
-      <main className="main-page">
-        Profile
+      <main className="profile-page">
+        <div className="profile-page__wrapper">
+          <ProfileContent />
+        </div>
       </main>
     </Fragment>
   );
