@@ -12,10 +12,10 @@ export const getCardMiddleware = store => next => async (action) => {
   if (action.type === fetchGetCardRequest.toString()) {
     try {
       const data = await getCard({ token: localStorage.getItem('token') });
-      if (data.success) {
-        store.dispatch(fetchGetCardSuccess(data.success));
+      if (data.status === 200) {
+        store.dispatch(fetchGetCardSuccess(data.data));
       } else {
-        store.dispatch(fetchGetCardFailure(data.error));
+        store.dispatch(fetchGetCardFailure(data.data.error));
       }
     } catch (error) {
       console.error(error);
@@ -31,11 +31,10 @@ export const setCardMiddleware = store => next => async (action) => {
     try {
       const { cardNumber, expiryDate, cardName, cvc } = action.payload;
       const data = await setCard({ cardNumber, expiryDate, cardName, cvc, token: localStorage.getItem('token') });
-      if (data.success) {
-        localStorage.setItem('token', data.token);
-        store.dispatch(fetchSetCardSuccess(data.token));
+      if (data.status === 200) {
+        store.dispatch(fetchSetCardSuccess(data.data.success));
       } else {
-        store.dispatch(fetchSetCardFailure(data.error));
+        store.dispatch(fetchSetCardFailure(data.data.error));
       }
     } catch (error) {
       console.error(error);

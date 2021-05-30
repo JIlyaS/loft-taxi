@@ -74,8 +74,8 @@ DateInput.propTypes = {
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired, 
-  placeholder: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  value: PropTypes.instanceOf(Date),
   classNameWrap: PropTypes.string,
   isAutofocus: PropTypes.bool,
   isRequired: PropTypes.bool, 
@@ -84,6 +84,7 @@ DateInput.propTypes = {
 
 DateInput.defaultProps = {
   type: 'text',
+  value: new Date(),
   classNameWrap: '',
   isAutofocus: false,
   isRequired: false,

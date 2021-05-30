@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { format } from 'date-fns'
+import { format } from 'date-fns';
 import {CardContent, Card as UICard} from '@material-ui/core';
 
 import cardRoad from '../../assets/images/card-road.svg';
@@ -15,7 +15,7 @@ const Card = ({ date, numberCard }) => {
         <CardContent className="card__content">
           <div className="card__content-top">
             <img className="card__icon-road" src={cardRoad} width="34px" height="34px" alt="Иконка карточки" />
-            <span className="card__date">{date ? format(new Date(date), 'MM/yy') : 'YY/MM'}</span>
+            <span className="card__date">{date ? format(date, 'MM/yy') : 'MM/YY'}</span>
           </div>
           <div className="card__content-main">
             <p className="card__number">{ numberCard }</p>
@@ -31,12 +31,12 @@ const Card = ({ date, numberCard }) => {
 }
 
 Card.propTypes = {
-  date: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
   numberCard: PropTypes.string.isRequired,
 }
 
 Card.defaultProps = {
-  date: 'YY/MM',
+  date: new Date(),
   numberCard: '',
 }
 

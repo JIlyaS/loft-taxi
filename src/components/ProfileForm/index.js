@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -7,6 +8,7 @@ import { connect } from 'react-redux';
 import Input from '../Input';
 import DateInput from '../DateInput';
 import Card from '../Card';
+import { getCurrentCard, getLoadingViewCard } from '../../modules/card/selectors';
 import { fetchGetCardRequest, fetchSetCardRequest } from '../../modules/card/actions';
 
 import './style.css';
@@ -20,12 +22,12 @@ const CssButton = withStyles({
     borderRadius: '70px'
   },
 })(Button);
-
-const ProfileForm = ({ currentCard, fetchGetCardRequestAction, fetchSetCardRequestAction }) => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [cardName, setCardName] = useState('');
-  const [numberCard, setNumberCard] = useState('');
-  const [cvc, setCVC] = useState('');
+const ProfileForm = ({ currentCard, isLoadingViewCard,  fetchGetCardRequestAction, fetchSetCardRequestAction }) => {
+  const initExpiryDate = currentCard.expiryDate ? new Date(currentCard.expiryDate) : new Date();
+  const [cardNumber, setCardNumber] = useState(currentCard.cardNumber);
+  const [cardName, setCardName] = useState(currentCard.cardName);
+  const [cvc, setCVC] = useState(currentCard.cvc);
+  const [expiryDate, setExpiryDate] = useState(initExpiryDate);
 
   useEffect(() => {
     fetchGetCardRequestAction();
@@ -33,19 +35,24 @@ const ProfileForm = ({ currentCard, fetchGetCardRequestAction, fetchSetCardReque
 
   const handleNumberCardChange = (evt) => {
     if (evt.target.value.length < 20) {
-      setNumberCard(evt.target.value);
+      setCardNumber(evt.target.value);
     }
   };
   const handleProfileSubmit = (evt) => {
     evt.preventDefault();
     const formData = {
-      cardNumber: numberCard,
-      expiryDate: selectedDate,
+      cardNumber,
+      expiryDate,
       cardName,
       cvc,
     };
     fetchSetCardRequestAction(formData);
   };
+
+  if (isLoadingViewCard) {
+    return 'Loading...';
+  }
+
   return (
     <div className="profile-form">
       <form onSubmit={handleProfileSubmit}>
@@ -67,7 +74,7 @@ const ProfileForm = ({ currentCard, fetchGetCardRequestAction, fetchSetCardReque
               name="card" 
               label="Номер карты" 
               placeholder="1111 1111 1111 1111"
-              value={numberCard} 
+              value={cardNumber} 
               classNameWrap="profile-form__block" 
               onChange={(evt) => handleNumberCardChange(evt)}
               isRequired
@@ -78,8 +85,8 @@ const ProfileForm = ({ currentCard, fetchGetCardRequestAction, fetchSetCardReque
                 id="date"
                 name="date"
                 label="MM/YY"
-                value={selectedDate}
-                setSelectedDate={setSelectedDate}
+                value={expiryDate}
+                setSelectedDate={setExpiryDate}
                 classNameWrap="profile-form__block profile-form__block--width" 
                 isRequired
               />
@@ -96,7 +103,7 @@ const ProfileForm = ({ currentCard, fetchGetCardRequestAction, fetchSetCardReque
             </div>
           </div>
           <div className="profile-form__right-block">
-            <Card date={selectedDate} numberCard={numberCard} />
+            <Card date={expiryDate} numberCard={cardNumber} />
           </div>
         </div>
         <div className="profile-form__block-btn">
@@ -118,13 +125,15 @@ const ProfileForm = ({ currentCard, fetchGetCardRequestAction, fetchSetCardReque
 
 ProfileForm.propTypes = {
   currentCard: PropTypes.object,
+  isLoadingViewCard: PropTypes.bool.isRequired,
   fetchGetCardRequestAction: PropTypes.func.isRequired,
   fetchSetCardRequestAction: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = ({card}) => {
+const mapStateToProps = (state) => {
   return {
-    currentCard: card.currentCard,
+    currentCard: getCurrentCard(state),
+    isLoadingViewCard: getLoadingViewCard(state),
   }
 }
 

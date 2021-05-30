@@ -16,7 +16,7 @@ const isLoadingViewCard = handleActions(
     [fetchGetCardSuccess]: (_state, action) => false,
     [fetchGetCardFailure]: (_state, action) => false, 
   },
-  false
+  true // ?
 );
 
 const isLoadingUpdateCard = handleActions(
@@ -40,7 +40,14 @@ const isUpdateSuccess = handleActions(
 const currentCard = handleActions(
   {
     [fetchGetCardRequest]: (_state, action) => null,
-    [fetchGetCardSuccess]: (_state, action) => action.payload,
+    [fetchGetCardSuccess]: (_state, action) => {
+      return {
+          cardNumber: action.payload?.cardNumber ? action.payload.cardNumber : '',
+          expiryDate: action.payload?.expiryDate ? action.payload.expiryDate : null, 
+          cardName: action.payload?.cardName ? action.payload.cardName : '',
+          cvc: action.payload?.cvc ? action.payload.cvc : ''
+      }
+    },
     [fetchGetCardFailure]: (_state, action) => null,
   },
   null

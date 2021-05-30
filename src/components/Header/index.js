@@ -42,7 +42,7 @@ const Header = ({logOutAction}) => {
           <li className="header__nav-item" key="login">
             <a 
               className="header__nav-link" 
-              data-testId="logout" 
+              // data-testId="logout" 
               onClick={(evt) => handleLogoutBtnClick(evt)}>
                 Выйти
             </a>

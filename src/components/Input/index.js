@@ -43,7 +43,7 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired, 
   placeholder: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   classNameWrap: PropTypes.string,
   isAutofocus: PropTypes.bool,
   isRequired: PropTypes.bool, 
@@ -52,6 +52,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
   type: 'text',
+  value: '',
   classNameWrap: '',
   isAutofocus: false,
   isRequired: false,

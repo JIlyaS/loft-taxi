@@ -1,29 +1,17 @@
-export const login = async ({ email, password }) => {
-  return fetch(` https://loft-taxi.glitch.me/auth`, {
-    method: 'POST',
-    body: JSON.stringify({
-      "email": email,
-      "password": password
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(response => response.json());
-}
+import axios from './axios';
 
-export const register = async ({ email, password, name, surname }) => {
-  return fetch(` https://loft-taxi.glitch.me/register`, {
-    method: 'POST',
-    body: JSON.stringify({
-      "email": email,
-      "password": password,
-      "name": name,
-      "surname": surname
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
+export const login = ({ email, password }) => {
+  return axios.post('/auth', {
+    email,
+    password
   })
-  .then(response => response.json());
-}
+};
+
+export const register = ({ email, password, name, surname }) => {
+  return axios.post('/register', {
+      email,
+      password,
+      name,
+      surname
+  });
+};
