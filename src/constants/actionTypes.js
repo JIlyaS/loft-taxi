@@ -19,3 +19,5 @@ export const FETCH_GET_CARD_FAILURE = 'loft-taxi/card/FETCH_GET_CARD_FAILURE';
 export const FETCH_SET_CARD_REQUEST = 'loft-taxi/card/FETCH_SET_CARD_REQUEST';
 export const FETCH_SET_CARD_SUCCESS = 'loft-taxi/card/FETCH_SET_CARD_SUCCESS';
 export const FETCH_SET_CARD_FAILURE = 'loft-taxi/card/FETCH_SET_CARD_FAILURE';
+
+export const RESET_SUCCESS_CARD = 'loft-taxi/card/RESET_SUCCESS_CARD';

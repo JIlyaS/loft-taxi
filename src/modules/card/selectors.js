@@ -9,3 +9,8 @@ export const getLoadingViewCard = createSelector(
   state => state.card.isLoadingViewCard,
   isLoadingViewCard => isLoadingViewCard
 );
+
+export const getUpdateSuccess = createSelector(
+  state => state.card.isUpdateSuccess,
+  isUpdateSuccess => isUpdateSuccess
+);

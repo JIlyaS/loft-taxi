@@ -8,6 +8,7 @@ import {
   fetchSetCardRequest,
   fetchSetCardSuccess,
   fetchSetCardFailure,
+  resetSuccessCard,
 } from './actions';
 
 const isLoadingViewCard = handleActions(
@@ -16,7 +17,7 @@ const isLoadingViewCard = handleActions(
     [fetchGetCardSuccess]: (_state, action) => false,
     [fetchGetCardFailure]: (_state, action) => false, 
   },
-  true // ?
+  false
 );
 
 const isLoadingUpdateCard = handleActions(
@@ -33,6 +34,7 @@ const isUpdateSuccess = handleActions(
     [fetchSetCardRequest]: (_state, action) => false,
     [fetchSetCardSuccess]: (_state, action) => action.payload,
     [fetchSetCardFailure]: (_state, action) => false, 
+    [resetSuccessCard]: (_state, action) => false,
   },
   false
 );
