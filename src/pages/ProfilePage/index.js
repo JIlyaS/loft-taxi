@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-// import PropTypes from 'prop-types';
 
 import Header from '../../components/Header';
 import ProfileContent from '../../components/ProfileContent';
@@ -10,7 +9,7 @@ const ProfilePage = () => {
   return (
     <Fragment>
       <Header />
-      <main className="profile-page">
+      <main className="profile-page" data-testid="profile-page">
         <div className="profile-page__wrapper">
           <ProfileContent />
         </div>
@@ -18,11 +17,6 @@ const ProfilePage = () => {
     </Fragment>
   );
 }
-
-// ProfilePage.propTypes = {
-//   page: PropTypes.string.isRequired,
-//   navigateTo: PropTypes.func.isRequired,
-// }
 
 export default ProfilePage;
 

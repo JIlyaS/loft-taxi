@@ -17,17 +17,13 @@ const CssKeyboardDatePicker = withStyles({
 })(KeyboardDatePicker);
 
 
-const DateInput = ({ 
-  name, 
-  type, 
+const DateInput = ({
+  id, 
   label, 
-  placeholder, 
-  value, 
-  classNameWrap,  
-  isAutofocus, 
+  value,
+  placeholder,
+  classNameWrap,   
   isRequired, 
-  InputLabelProps, 
-  inputProps,
   setSelectedDate
 }) => {
   const handleDateChange = (date) => {
@@ -36,57 +32,38 @@ const DateInput = ({
   return (
     <div className={cn('input', classNameWrap)}>
         <CssKeyboardDatePicker
-          disableToolbar
-          variant="inline"
+          openTo="year"
+          views={["year", "month"]}
           format="MM/yyyy"
           margin="dense"
-          id="date-picker-inline"
+          placeholder={placeholder}
+          id={id}
           label={label}
           value={value}
           onChange={handleDateChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
+          required={isRequired}
         />
-      {/* <CssTextField  
-        label={label} 
-        id={name}
-        // value={value} 
-        name={name}
-        type={type}
-        placeholder={placeholder} 
-        size="small"
-        margin="dense"
-        format="MM/yyyy"
-        defaultValue="05/2021"
-        // onChange={onChange}
-        InputLabelProps={InputLabelProps}
-        inputProps={inputProps}
-        // required={isRequired}
-        // autoFocus={isAutofocus}
-        // fullWidth
-      /> */}
     </div>
   );
 }
 
 DateInput.propTypes = {
-  type: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired, 
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.string, 
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   value: PropTypes.instanceOf(Date),
   classNameWrap: PropTypes.string,
-  isAutofocus: PropTypes.bool,
   isRequired: PropTypes.bool, 
   setSelectedDate: PropTypes.func.isRequired,
 };
 
 DateInput.defaultProps = {
-  type: 'text',
   value: new Date(),
   classNameWrap: '',
-  isAutofocus: false,
+  placeholder: '',
   isRequired: false,
   setSelectedDate: () => {},
 };

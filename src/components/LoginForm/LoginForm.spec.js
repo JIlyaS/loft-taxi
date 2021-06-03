@@ -1,37 +1,48 @@
 import React from 'react';
 import {LoginForm} from './';
+import { Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 
+const renderWithRouter = (component, {route='/', history = createMemoryHistory({ initialEntries: [route]})} = {}) => {
+  const Wrapper = ({ children }) => (
+    <Router history={history}>{ children }</Router>
+  );
+
+  return {
+    ...render(component, {wrapper: Wrapper}),
+    history,
+  };
+};
+
 describe('LoginForm', () => {
   it('renders correctly spanshot', () => {
-    const tree = renderer.create(<LoginForm onLoginForm={() => {}} />).toJSON();
+    const history = createMemoryHistory();
+    const tree = renderer.create(<Router history={history}><LoginForm fetchLoginRequestAction={jest.fn()} /></Router>).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('Change mail successfully', () => {
-    render(<LoginForm onLoginForm={() => {}} />);
-    const input = screen.getByPlaceholderText('mail@mail.ru');
-    expect(input).toBeInTheDocument();
-    fireEvent.change(input, { target: { value: 'mail@mail.ru' } });
-    expect(input.value).toBe('mail@mail.ru');
+  it('should render correct', () => {
+    const { getByTestId } = renderWithRouter(<LoginForm fetchLoginRequestAction={jest.fn()} />);
+    const registerForm = getByTestId('login-form');
+    expect(registerForm).toBeInTheDocument();
   });
 
-  it('Change password successfully', () => {
-    render(<LoginForm onLoginForm={() => {}} />);
-    const input = screen.getByPlaceholderText('************');
+  it('Change user email successfully', () => {
+    renderWithRouter(<LoginForm fetchLoginRequestAction={jest.fn()} />);
+    const input = screen.getByPlaceholderText('mail@mail.ru');
     expect(input).toBeInTheDocument();
-    fireEvent.change(input, { target: { value: '12345678' } });
-    expect(input.value).toBe('12345678');
+    fireEvent.change(input, { target: { value: 'ilkolmakov@mail.ru' } });
+    expect(input.value).toBe('ilkolmakov@mail.ru');
   });
     
-    // Не проходит из-за контекста
-    // it('Clicked login submit btn', () => {
-    //   const handleClick = jest.fn()
-    //   render(<LoginForm onLoginForm={handleClick} />);
-    //   const loginSubmitBtn = screen.getByRole('button');
-    //   fireEvent.click(loginSubmitBtn)
-    //   expect(handleClick).toHaveBeenCalledTimes(1);
-    // });
+  it('Change user password successfully', () => {
+    renderWithRouter(<LoginForm fetchLoginRequestAction={jest.fn()} />);
+    const input = screen.getByPlaceholderText('************');
+    expect(input).toBeInTheDocument();
+    fireEvent.change(input, { target: { value: '123' } });
+    expect(input.value).toBe('123');
+  });
 });
 

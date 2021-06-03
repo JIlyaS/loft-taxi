@@ -8,7 +8,7 @@ import './style.css';
 const RegisterPage = () => {
   
   return (
-    <div className="login-page" data-testId="login-page">
+    <div className="login-page" data-testid="register-page">
       <div className="login-page__left">
         <img className="login-page__logo" src={logo} alt="Логотип" />
       </div>

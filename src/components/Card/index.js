@@ -15,10 +15,10 @@ const Card = ({ date, numberCard }) => {
         <CardContent className="card__content">
           <div className="card__content-top">
             <img className="card__icon-road" src={cardRoad} width="34px" height="34px" alt="Иконка карточки" />
-            <span className="card__date">{date ? format(date, 'MM/yy') : 'MM/YY'}</span>
+            <span className="card__date" data-testid="card-date">{date ? format(date, 'MM/yy') : 'MM/YY'}</span>
           </div>
           <div className="card__content-main">
-            <p className="card__number">{ numberCard }</p>
+            <p className="card__number" data-testid="card-number">{ numberCard }</p>
           </div>
           <div className="card__content-bottom">
             <img className="card__icon-card" src={cardIcon} width="29px" height="26px" alt="Иконка карточки" />
@@ -31,8 +31,8 @@ const Card = ({ date, numberCard }) => {
 }
 
 Card.propTypes = {
-  date: PropTypes.instanceOf(Date).isRequired,
-  numberCard: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date),
+  numberCard: PropTypes.string,
 }
 
 Card.defaultProps = {

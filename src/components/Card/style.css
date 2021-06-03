@@ -39,10 +39,11 @@
 }
 
 .card__number {
+  margin-left: 5px;
   font-size: 21px;
   line-height: 25px;
   color: #000000;
-  margin-left: 5px;
+  text-align: left;
 }
 
 .card__icon-ellipses {
@@ -54,6 +55,7 @@
 .card__icon-ellipses::before {
   content: '';
   position: absolute;
+  left: 0;
   width: 28px;
   height: 28px;
   background: url('../../assets/images/card-ellipse.svg') no-repeat;

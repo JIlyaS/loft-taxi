@@ -10,7 +10,7 @@ const MapPage = () => {
   return (
     <Fragment>
       <Header />
-      <main className="main-page" data-testId="main">
+      <main className="main-page" data-testid="map-page">
         <Map />
       </main>
     </Fragment>

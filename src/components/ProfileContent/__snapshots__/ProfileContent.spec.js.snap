@@ -1,0 +1,346 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileContent renders correctly spanshot 1`] = `
+<div
+  className="profile-content"
+>
+  <h2
+    className="profile-content__header"
+    data-testid="profile-header"
+  >
+    Профиль
+  </h2>
+  <p
+    className="profile-content__paragraph"
+  >
+    Введите платёжные данные
+  </p>
+  <div
+    className="profile-content__block"
+  >
+    <div
+      className="profile-form"
+      data-testid="profile-form"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div
+          className="profile-form__wrap"
+        >
+          <div
+            className="profile-form__left-block"
+          >
+            <div
+              className="input profile-form__block profile-form__block--mb10"
+            >
+              <div
+                className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-1 MuiFormControl-marginDense MuiFormControl-fullWidth"
+              >
+                <label
+                  className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense Mui-required Mui-required"
+                  data-shrink={false}
+                  htmlFor="name"
+                  id="name-label"
+                >
+                  Имя владельца
+                  <span
+                    aria-hidden={true}
+                    className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                  >
+                     
+                    *
+                  </span>
+                </label>
+                <div
+                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl MuiInputBase-marginDense MuiInput-marginDense"
+                  onClick={[Function]}
+                >
+                  <input
+                    aria-invalid={false}
+                    autoFocus={true}
+                    className="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense"
+                    disabled={false}
+                    id="name"
+                    name="name"
+                    onAnimationStart={[Function]}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    placeholder="USER NAME"
+                    required={true}
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="input profile-form__block"
+            >
+              <div
+                className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-1 MuiFormControl-marginDense MuiFormControl-fullWidth"
+              >
+                <label
+                  className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense Mui-required Mui-required"
+                  data-shrink={false}
+                  htmlFor="card"
+                  id="card-label"
+                >
+                  Номер карты
+                  <span
+                    aria-hidden={true}
+                    className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                  >
+                     
+                    *
+                  </span>
+                </label>
+                <div
+                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl MuiInputBase-marginDense MuiInput-marginDense"
+                  onClick={[Function]}
+                >
+                  <input
+                    aria-invalid={false}
+                    autoFocus={false}
+                    className="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense"
+                    disabled={false}
+                    id="card"
+                    name="card"
+                    onAnimationStart={[Function]}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    placeholder="1111 1111 1111 1111"
+                    required={true}
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="profile-form__width"
+            >
+              <div
+                className="input profile-form__block profile-form__block--width"
+              >
+                <div
+                  className="MuiFormControl-root MuiTextField-root PickerWithState-root-2 MuiFormControl-marginDense"
+                >
+                  <label
+                    className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-marginDense MuiFormLabel-filled Mui-required Mui-required"
+                    data-shrink={true}
+                    htmlFor="date-picker"
+                    id="date-picker-label"
+                  >
+                    MM/YY
+                    <span
+                      aria-hidden={true}
+                      className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                    >
+                       
+                      *
+                    </span>
+                  </label>
+                  <div
+                    className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd MuiInputBase-marginDense MuiInput-marginDense"
+                    onClick={[Function]}
+                  >
+                    <input
+                      aria-invalid={false}
+                      autoFocus={false}
+                      className="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedEnd MuiInputBase-inputMarginDense MuiInput-inputMarginDense"
+                      disabled={false}
+                      id="date-picker"
+                      onAnimationStart={[Function]}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      placeholder="MM/YY"
+                      required={true}
+                      type="text"
+                      value="06/2021"
+                    />
+                    <div
+                      className="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-marginDense"
+                    >
+                      <button
+                        aria-label="change date"
+                        className="MuiButtonBase-root MuiIconButton-root"
+                        disabled={false}
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onDragLeave={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
+                        tabIndex={0}
+                        type="button"
+                      >
+                        <span
+                          className="MuiIconButton-label"
+                        >
+                          <svg
+                            aria-hidden={true}
+                            className="MuiSvgIcon-root"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                            />
+                            <path
+                              d="M0 0h24v24H0z"
+                              fill="none"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+              <div
+                className="input profile-form__block profile-form__block--width"
+              >
+                <div
+                  className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-1 MuiFormControl-marginDense MuiFormControl-fullWidth"
+                >
+                  <label
+                    className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense Mui-required Mui-required"
+                    data-shrink={false}
+                    htmlFor="cvc"
+                    id="cvc-label"
+                  >
+                    CVC
+                    <span
+                      aria-hidden={true}
+                      className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                    >
+                       
+                      *
+                    </span>
+                  </label>
+                  <div
+                    className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl MuiInputBase-marginDense MuiInput-marginDense"
+                    onClick={[Function]}
+                  >
+                    <input
+                      aria-invalid={false}
+                      autoFocus={false}
+                      className="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense"
+                      disabled={false}
+                      id="cvc"
+                      name="cvc"
+                      onAnimationStart={[Function]}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      placeholder="667"
+                      required={true}
+                      type="password"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="profile-form__right-block"
+          >
+            <div
+              className="card"
+            >
+              <div
+                className="MuiPaper-root MuiCard-root card__ui MuiPaper-elevation1 MuiPaper-rounded"
+              >
+                <div
+                  className="MuiCardContent-root card__content"
+                >
+                  <div
+                    className="card__content-top"
+                  >
+                    <img
+                      alt="Иконка карточки"
+                      className="card__icon-road"
+                      height="34px"
+                      src="card-road.svg"
+                      width="34px"
+                    />
+                    <span
+                      className="card__date"
+                      data-testid="card-date"
+                    >
+                      06/21
+                    </span>
+                  </div>
+                  <div
+                    className="card__content-main"
+                  >
+                    <p
+                      className="card__number"
+                      data-testid="card-number"
+                    >
+                      
+                    </p>
+                  </div>
+                  <div
+                    className="card__content-bottom"
+                  >
+                    <img
+                      alt="Иконка карточки"
+                      className="card__icon-card"
+                      height="26px"
+                      src="card-icon.svg"
+                      width="29px"
+                    />
+                    <span
+                      className="card__icon-ellipses"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="profile-form__block-btn"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-3 MuiButton-contained profile-form__save-btn MuiButton-containedPrimary MuiButton-disableElevation MuiButton-fullWidth"
+            disabled={false}
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="submit"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Сохранить
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;

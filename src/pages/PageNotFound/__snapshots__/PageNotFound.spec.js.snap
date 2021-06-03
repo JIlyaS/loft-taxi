@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageNotFound renders correctly spanshot 1`] = `
+<main
+  className="main-page"
+  data-testid="not-found"
+>
+  Страница не найдена
+</main>
+`;

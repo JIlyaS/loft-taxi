@@ -29,7 +29,7 @@ const ProfileContent = ({isUpdateSuccess, resetSuccessCardAction}) => {
   };
   return (
     <div className="profile-content">
-      <h2 className="profile-content__header">Профиль</h2>
+      <h2 className="profile-content__header" data-testid="profile-header">Профиль</h2>
       <p className={cn('profile-content__paragraph', {'profile-content__paragraph-success': isUpdateSuccess})}>
         {isUpdateSuccess ? 
           'Платёжные данные обновлены. Теперь вы можете заказывать такси.' : 
@@ -37,7 +37,7 @@ const ProfileContent = ({isUpdateSuccess, resetSuccessCardAction}) => {
         }
       </p>
       <div className="profile-content__block">
-        {isUpdateSuccess ?  <CssButton 
+        {isUpdateSuccess ? <CssButton 
           className="profile-content__to-cart" 
           type="button" 
           variant="contained" 
@@ -53,8 +53,12 @@ const ProfileContent = ({isUpdateSuccess, resetSuccessCardAction}) => {
   );
 }
 
+ProfileContent.defaultProps = {
+  isUpdateSuccess: false,
+}
+
 ProfileContent.propTypes = {
-  isUpdateSuccess: PropTypes.bool.isRequired,
+  isUpdateSuccess: PropTypes.bool,
   resetSuccessCardAction: PropTypes.func.isRequired,
 }
 

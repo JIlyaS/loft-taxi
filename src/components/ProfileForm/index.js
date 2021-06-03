@@ -54,7 +54,7 @@ const ProfileForm = ({ currentCard, isLoadingViewCard,  fetchGetCardRequestActio
   }
 
   return (
-    <div className="profile-form">
+    <div className="profile-form" data-testid="profile-form">
       <form onSubmit={handleProfileSubmit}>
         <div className="profile-form__wrap">
           <div className="profile-form__left-block">
@@ -82,8 +82,9 @@ const ProfileForm = ({ currentCard, isLoadingViewCard,  fetchGetCardRequestActio
             <div className="profile-form__width">
               <DateInput
                 type="date"
-                id="date"
+                id="date-picker"
                 name="date"
+                placeholder="MM/YY"
                 label="MM/YY"
                 value={expiryDate}
                 setSelectedDate={setExpiryDate}
@@ -91,7 +92,7 @@ const ProfileForm = ({ currentCard, isLoadingViewCard,  fetchGetCardRequestActio
                 isRequired
               />
               <Input 
-                type="text"
+                type="password"
                 name="cvc" 
                 label="CVC" 
                 placeholder="667"
@@ -128,6 +129,10 @@ ProfileForm.propTypes = {
   isLoadingViewCard: PropTypes.bool.isRequired,
   fetchGetCardRequestAction: PropTypes.func.isRequired,
   fetchSetCardRequestAction: PropTypes.func.isRequired,
+}
+
+ProfileForm.defaultProps = {
+  currentCard: {},
 }
 
 const mapStateToProps = (state) => {

@@ -31,16 +31,16 @@ const RegisterForm = ({fetchRegisterRequestAction}) => {
   };
 
   return (
-    <div className="login-form">
+    <div className="register-form"  data-testid="register-form">
       <form onSubmit={handleRegisterSubmit}>
-        <h2 className="login-form__title">Регистрация</h2>
+        <h2 className="register-form__title">Регистрация</h2>
         <Input 
           type="email"
           name="email" 
           label="Email" 
           placeholder="mail@mail.ru"
           value={email} 
-          classNameWrap="login-form__block" 
+          classNameWrap="register-form__block" 
           onChange={(evt) => setEmail(evt.target.value)}
           isAutofocus
           isRequired
@@ -51,7 +51,7 @@ const RegisterForm = ({fetchRegisterRequestAction}) => {
           label="Как вас зовут?" 
           placeholder="Петр Александрович"
           value={userName} 
-          classNameWrap="login-form__block" 
+          classNameWrap="register-form__block" 
           onChange={(evt) => setUserName(evt.target.value)}
           isRequired
         />
@@ -61,12 +61,12 @@ const RegisterForm = ({fetchRegisterRequestAction}) => {
           label="Пароль" 
           placeholder="************"
           value={password} 
-          classNameWrap="login-form__block" 
+          classNameWrap="register-form__block" 
           onChange={(evt) => setPassword(evt.target.value)}
           isRequired
         />
         <CssButton 
-          className="login-form__login-btn" 
+          className="register-form__login-btn" 
           type="submit" 
           variant="contained" 
           color="primary" 
@@ -75,9 +75,9 @@ const RegisterForm = ({fetchRegisterRequestAction}) => {
         >
           Зарегистрироваться
         </CssButton>
-        <div className="login-form__new-block">
-          <span className="login-form__new-text">Уже зарегестрированны?</span>
-          <Link className="login-form__reg" to="/login">Войти</Link>
+        <div className="register-form__new-block">
+          <span className="register-form__new-text">Уже зарегестрированны?</span>
+          <Link className="register-form__reg" to="/login">Войти</Link>
         </div>
       </form>
     </div>

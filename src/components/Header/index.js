@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {NavLink} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
-import {logOut} from '../../modules/auth';
+import { logOut } from '../../modules/auth';
 import logo from '../../assets/images/logo.svg';
 import './style.css';
 
@@ -13,17 +13,18 @@ const headerList = [
   {id: 'profile', name: 'Профиль', path: "/profile"},
 ];
 
-const Header = ({logOutAction}) => {
+const Header = ({ logOutAction }) => {
 
   const handleLogoutBtnClick = (evt) => {
     evt.preventDefault();
+    localStorage.removeItem('token');
     logOutAction();
   };
 
   return (
     <header className="header">
       <img className="header__logo" src={logo} alt="Логотип" />
-      <nav className="header__nav">
+      <nav className="header__nav" data-testid="nav">
         <ul className="header__nav-list">
           {
             headerList.map((item) => (
@@ -32,6 +33,7 @@ const Header = ({logOutAction}) => {
                   to={item.path}
                   className="header__nav-link"
                   activeClassName="header__nav-link--active"
+                  data-testid={item.id}
                   exact
                 >
                   { item.name }
@@ -42,9 +44,10 @@ const Header = ({logOutAction}) => {
           <li className="header__nav-item" key="login">
             <a 
               className="header__nav-link" 
-              // data-testId="logout" 
-              onClick={(evt) => handleLogoutBtnClick(evt)}>
-                Выйти
+              data-testid="logout" 
+              onClick={handleLogoutBtnClick}
+            >
+              Выйти
             </a>
           </li>
         </ul>
@@ -54,7 +57,7 @@ const Header = ({logOutAction}) => {
 }
 
 Header.propTypes = {
-  logOut: PropTypes.func,
+  logOutAction: PropTypes.func,
 }
 
 const mapDispatchToProps = {

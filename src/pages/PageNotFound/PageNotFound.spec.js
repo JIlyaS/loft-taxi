@@ -5,9 +5,10 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+
 import {Provider} from 'react-redux';
 
-import {RegisterPage} from './';
+import {PageNotFound} from './';
 import createStore from '../../store';
 
 const store = createStore();
@@ -29,13 +30,14 @@ const renderWithRouter = (component, {route='/', history = createMemoryHistory({
   };
 };
 
-describe('RegisterPage', () => {
+
+describe('PageNotFound', () => {
   it('renders correctly spanshot', () => {
     const history = createMemoryHistory();
     const tree = renderer.create(<Provider store={store}>
       <Router history={history}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <RegisterPage />
+          <PageNotFound />
         </MuiPickersUtilsProvider>
       </Router>
     </Provider>).toJSON();
@@ -43,8 +45,7 @@ describe('RegisterPage', () => {
   });
 
   it('render correct', () => {
-    const { queryByTestId } = renderWithRouter(<RegisterPage />);
-    expect(queryByTestId('register-page')).toBeInTheDocument();
+    const { queryByTestId } = renderWithRouter(<PageNotFound />);
+    expect(queryByTestId('not-found')).toBeInTheDocument();
   });
 });
-

@@ -31,7 +31,7 @@ const LoginForm = ({fetchLoginRequestAction}) => {
   };
 
   return (
-    <div className="login-form">
+    <div className="login-form" data-testid="login-form">
       <form onSubmit={handleLoginSubmit}>
         <h2 className="login-form__title">Войти</h2>
         <Input 
