@@ -21,3 +21,16 @@ export const FETCH_SET_CARD_SUCCESS = 'loft-taxi/card/FETCH_SET_CARD_SUCCESS';
 export const FETCH_SET_CARD_FAILURE = 'loft-taxi/card/FETCH_SET_CARD_FAILURE';
 
 export const RESET_SUCCESS_CARD = 'loft-taxi/card/RESET_SUCCESS_CARD';
+
+//// ADDRESS
+
+export const FETCH_ADDRESS_REQUEST = 'loft-taxi/address/FETCH_ADDRESS_REQUEST';
+export const FETCH_ADDRESS_SUCCESS = 'loft-taxi/address/FETCH_ADDRESS_SUCCESS';
+export const FETCH_ADDRESS_FAILURE = 'loft-taxi/address/FETCH_ADDRESS_FAILURE';
+
+
+//// ROUTE
+
+export const FETCH_ROUTE_REQUEST = 'loft-taxi/route/FETCH_ROUTE_REQUEST';
+export const FETCH_ROUTE_SUCCESS = 'loft-taxi/route/FETCH_ROUTE_SUCCESS';
+export const FETCH_ROUTE_FAILURE = 'loft-taxi/route/FETCH_ROUTE_FAILURE';

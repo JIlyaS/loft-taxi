@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 
 import Header from '../../components/Header';
 import Map from '../../components/Map';
+import MapForm from '../../components/MapForm';
 
 import './style.css';
 
@@ -11,6 +12,7 @@ const MapPage = () => {
     <Fragment>
       <Header />
       <main className="main-page" data-testid="map-page">
+        <MapForm />
         <Map />
       </main>
     </Fragment>

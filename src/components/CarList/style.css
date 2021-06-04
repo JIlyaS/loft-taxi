@@ -1,0 +1,52 @@
+.car-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.car-list__item {
+  width: 118px;
+  height: 167px;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.car-list__title {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #000000;
+}
+
+.car-list__label {
+  display: block;
+  font-size: 11px;
+  line-height: 13px;
+  color: #828282;
+}
+
+.car-list__cost {
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #000000;
+}
+
+.car-list__img--standart {
+  position: relative;
+  left: -4px;
+}
+
+.car-list__img--premium {
+  position: relative;
+  left: -15px;
+}
+
+.car-list__img--business {
+  position: relative;
+  top: 7px;
+  left: -7px;
+}
