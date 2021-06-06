@@ -40,6 +40,7 @@ const DateInput = ({
           id={id}
           label={label}
           value={value}
+          minDate={new Date()}
           onChange={handleDateChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',

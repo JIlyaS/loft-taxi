@@ -2,7 +2,7 @@ import React from 'react';
 import {ProfileContent} from './';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';

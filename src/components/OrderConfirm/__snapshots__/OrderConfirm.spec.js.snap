@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderConfirm renders correctly snapshot 1`] = `
+<div
+  className="order-confirm"
+  data-testid="order-confirm"
+>
+  <h2
+    className="order-confirm__header"
+  >
+    Заказ размещен
+  </h2>
+  <p
+    className="order-confirm__text"
+  >
+    Ваше такси уже едет к вам. Прибудет приблизительно через 10 минут.
+  </p>
+  <div
+    className="order-confirm__block-btn"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-1 MuiButton-contained order-confirm__btn MuiButton-containedPrimary MuiButton-disableElevation MuiButton-fullWidth"
+      data-testid="order-confirm-btn"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Сделать новый заказ
+      </span>
+    </button>
+  </div>
+</div>
+`;

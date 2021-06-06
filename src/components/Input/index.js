@@ -17,7 +17,18 @@ const CssTextField = withStyles({
 })(TextField);
 
 
-const Input = ({ name, type, label, placeholder, value, classNameWrap,  isAutofocus, isRequired, onChange }) => {
+const Input = ({ 
+  name, 
+  type, 
+  label, 
+  placeholder, 
+  value, 
+  classNameWrap,
+  disabled,
+  isAutofocus, 
+  isRequired, 
+  onChange 
+}) => {
   return (
     <div className={cn('input', classNameWrap)}>
       <CssTextField  
@@ -29,6 +40,7 @@ const Input = ({ name, type, label, placeholder, value, classNameWrap,  isAutofo
         placeholder={placeholder} 
         size="small"
         margin="dense"
+        disabled={disabled}
         onChange={onChange}
         required={isRequired}
         autoFocus={isAutofocus}
@@ -45,6 +57,7 @@ Input.propTypes = {
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string,
   classNameWrap: PropTypes.string,
+  disabled: PropTypes.bool, 
   isAutofocus: PropTypes.bool,
   isRequired: PropTypes.bool, 
   onChange: PropTypes.func.isRequired,
@@ -54,6 +67,7 @@ Input.defaultProps = {
   type: 'text',
   value: '',
   classNameWrap: '',
+  disabled: false,
   isAutofocus: false,
   isRequired: false,
   onChange: () => {},

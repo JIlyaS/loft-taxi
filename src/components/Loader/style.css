@@ -1,0 +1,11 @@
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%);
+}
+
+.loader__img {
+  width: 70px;
+  height: 70px;
+}

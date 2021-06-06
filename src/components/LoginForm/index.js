@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 
 import Input from '../Input';
 import { fetchLoginRequest } from '../../modules/auth/actions';
+import { getLoadingLogin } from '../../modules/auth/selectors';
 
 import './style.css';
 
@@ -19,11 +20,16 @@ const CssButton = withStyles({
     textTransform: 'capitalize',
     borderRadius: '70px'
   },
+  disabled: {
+    backgroundColor: '#D8D7D5 !important',
+    color: '#737373 !important'
+  }
 })(Button);
 
-const LoginForm = ({fetchLoginRequestAction}) => {
+const LoginForm = ({isLoadingLogin, fetchLoginRequestAction}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // const disabledLoginBtn = !email || !password || isLoadingLogin;
 
   const handleLoginSubmit = (evt) => {
     evt.preventDefault();
@@ -41,6 +47,7 @@ const LoginForm = ({fetchLoginRequestAction}) => {
           placeholder="mail@mail.ru"
           value={email} 
           classNameWrap="login-form__block" 
+          disabled={isLoadingLogin}
           onChange={(evt) => setEmail(evt.target.value)}
           isAutofocus
           isRequired
@@ -51,7 +58,8 @@ const LoginForm = ({fetchLoginRequestAction}) => {
           label="Пароль" 
           placeholder="************"
           value={password} 
-          classNameWrap="login-form__block" 
+          classNameWrap="login-form__block"
+          disabled={isLoadingLogin} 
           onChange={(evt) => setPassword(evt.target.value)}
           isRequired
         />
@@ -62,7 +70,8 @@ const LoginForm = ({fetchLoginRequestAction}) => {
           className="login-form__login-btn" 
           type="submit" 
           variant="contained" 
-          color="primary" 
+          color="primary"
+          disabled={isLoadingLogin}
           disableElevation 
           fullWidth
         >
@@ -79,9 +88,15 @@ const LoginForm = ({fetchLoginRequestAction}) => {
 
 LoginForm.propTypes = {
   fetchLoginRequestAction: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    isLoadingLogin: getLoadingLogin(state),
+  }
 }
 
-export default connect(null, {
+export default connect(mapStateToProps, {
   fetchLoginRequestAction: fetchLoginRequest,
 })(LoginForm);
 

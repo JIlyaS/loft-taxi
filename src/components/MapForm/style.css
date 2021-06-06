@@ -1,0 +1,65 @@
+.map-form {
+  position: absolute;
+  left: 59px;
+  top: 59px;
+  width: 486px;
+  height: 471px;
+
+  background: #FFFFFF;
+  box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.map-form__top-block {
+  height: 125px;
+  margin-bottom: 23px;
+  padding: 0 22px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.map-form__bottom-block {
+  width: 100%;
+  height: 323px;
+  padding: 32px 46px 0;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.map-form__save-btn {
+  width: 100%;
+  height: 61px;
+  max-width: 394px;
+  text-transform: none !important;
+  color: var(--black) !important;
+  background-color: var(--second-color) !important;
+}
+
+.map-form__block-btn {
+  margin-top: 30px;
+}
+
+.map-form__line {
+  width: 100%;
+  height: 1px;
+  background-color: #E0E0E0;
+}
+
+.map-form__select-first {
+  margin-top: 20px !important;
+  margin-bottom: 10px !important;
+}
+
+.map-form__select-last {
+  margin-top: 10px !important;
+}
+
+.map-form__brightness-icon {
+  font-size: 14px !important;
+}
+
+.map-form__near-me-icon {
+  font-size: 16px !important;
+  color: #FDBF5A;
+}
