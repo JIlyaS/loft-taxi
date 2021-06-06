@@ -1,5 +1,5 @@
 import {Map} from './';
-// import { cleanup, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 
 describe('Map', () => {
@@ -9,9 +9,8 @@ describe('Map', () => {
       expect(tree).toMatchSnapshot();
     });
   
-  // не проходит из-за this.map.remove()
-  // it('render correct', () => {
-  //   const { queryByTestId } = render(<Map />);
-  //   expect(queryByTestId('map')).toBeInTheDocument();
-  // });
+  it('render correct', () => {
+    const { queryByTestId } = render(<Map />);
+    expect(queryByTestId('map')).toBeInTheDocument();
+  });
 });

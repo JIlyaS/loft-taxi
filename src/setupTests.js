@@ -5,7 +5,8 @@
 import '@testing-library/jest-dom';
 
 import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import mapboxgl from 'mapbox-gl';
 
 configure({ adapter: new Adapter() });
 
@@ -18,3 +19,7 @@ jest.mock('mapbox-gl/dist/mapbox-gl', () => ({
   })),
   NavigationControl: jest.fn(),
 }));
+
+beforeEach(() => {
+  mapboxgl.Map.mockReturnValueOnce({ remove: jest.fn() });
+});

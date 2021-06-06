@@ -1,29 +1,26 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import Header from '../../components/Header';
 import Map from '../../components/Map';
 
 import './style.css';
 
-const MapPage = ({ page, navigateTo }) => {
-  const handleSetPageClick = (page) => {
-    navigateTo(page);
-  };
+const MapPage = () => {
   return (
     <Fragment>
-      <Header page={page} navigateTo={handleSetPageClick} />
-      <main className="main-page" data-testId="main">
+      <Header />
+      <main className="main-page" data-testid="map-page">
         <Map />
       </main>
     </Fragment>
   );
 }
 
-MapPage.propTypes = {
-  page: PropTypes.string.isRequired,
-  navigateTo: PropTypes.func.isRequired,
-}
+// MapPage.propTypes = {
+//   page: PropTypes.string.isRequired,
+//   navigateTo: PropTypes.func.isRequired,
+// }
 
 export default MapPage;
 

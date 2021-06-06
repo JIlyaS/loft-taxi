@@ -1,27 +1,21 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 
 import Header from '../../components/Header';
+import ProfileContent from '../../components/ProfileContent';
 
 import './style.css';
 
-const ProfilePage = ({page, navigateTo}) => {
-  const handleSetPageClick = (page) => {
-    navigateTo(page);
-  };
+const ProfilePage = () => {
   return (
     <Fragment>
-      <Header page={page} navigateTo={handleSetPageClick} />
-      <main className="main-page">
-        Profile
+      <Header />
+      <main className="profile-page" data-testid="profile-page">
+        <div className="profile-page__wrapper">
+          <ProfileContent />
+        </div>
       </main>
     </Fragment>
   );
-}
-
-ProfilePage.propTypes = {
-  page: PropTypes.string.isRequired,
-  navigateTo: PropTypes.func.isRequired,
 }
 
 export default ProfilePage;

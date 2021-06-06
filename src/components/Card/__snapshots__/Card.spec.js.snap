@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card renders correctly snapshot 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="MuiPaper-root MuiCard-root card__ui MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="MuiCardContent-root card__content"
+    >
+      <div
+        className="card__content-top"
+      >
+        <img
+          alt="Иконка карточки"
+          className="card__icon-road"
+          height="34px"
+          src="card-road.svg"
+          width="34px"
+        />
+        <span
+          className="card__date"
+          data-testid="card-date"
+        >
+          06/21
+        </span>
+      </div>
+      <div
+        className="card__content-main"
+      >
+        <p
+          className="card__number"
+          data-testid="card-number"
+        >
+          
+        </p>
+      </div>
+      <div
+        className="card__content-bottom"
+      >
+        <img
+          alt="Иконка карточки"
+          className="card__icon-card"
+          height="26px"
+          src="card-icon.svg"
+          width="29px"
+        />
+        <span
+          className="card__icon-ellipses"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -19,6 +19,7 @@ exports[`LoginPage renders correctly spanshot 1`] = `
   >
     <div
       className="login-form"
+      data-testid="login-form"
     >
       <form
         onSubmit={[Function]}
@@ -29,7 +30,7 @@ exports[`LoginPage renders correctly spanshot 1`] = `
           Войти
         </h2>
         <div
-          className="login-form__block"
+          className="input login-form__block"
         >
           <div
             className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-1 MuiFormControl-marginDense MuiFormControl-fullWidth"
@@ -66,14 +67,14 @@ exports[`LoginPage renders correctly spanshot 1`] = `
                 onFocus={[Function]}
                 placeholder="mail@mail.ru"
                 required={true}
-                type="text"
+                type="email"
                 value=""
               />
             </div>
           </div>
         </div>
         <div
-          className="login-form__block"
+          className="input login-form__block"
         >
           <div
             className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-1 MuiFormControl-marginDense MuiFormControl-fullWidth"
@@ -159,7 +160,7 @@ exports[`LoginPage renders correctly spanshot 1`] = `
           </span>
           <a
             className="login-form__reg"
-            href="/"
+            href="/register"
             onClick={[Function]}
           >
             Регистрация

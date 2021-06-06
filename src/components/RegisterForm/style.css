@@ -1,4 +1,4 @@
-.login-form {
+.register-form {
   width: 580px;
   height: 541px;
   padding: 55px 112px;
@@ -7,24 +7,24 @@
   border-radius: 20px;
 }
 
-.login-form__title {
+.register-form__title {
   margin: 0;
   margin-bottom: 45px;
   text-align: center;
 }
 
-.login-form__block {
+.register-form__block {
   margin-bottom: 20px;
 }
 
-.login-form__link-block {
+.register-form__link-block {
   position: relative;
   top: -5px;
   margin-bottom: 46px;
   text-align: right;
 }
 
-.login-form__forget-pass {
+.register-form__forget-pass {
   display: inline-block;
   color: var(--text-grey-color);
   font-size: 16px;
@@ -32,41 +32,41 @@
   text-decoration: none;
 }
 
-.login-form__forget-pass:hover {
+.register-form__forget-pass:hover {
   color: var(--text-grey-color);
   text-decoration: none;
 }
 
-.login-form__login-btn {
+.register-form__login-btn {
   width: 100%;
   height: 61px;
   color: var(--black) !important;
   background-color: var(--second-color) !important;
 }
 
-.login-form__new-block {
+.register-form__new-block {
   margin-top: 33px;
   text-align: center;
 }
 
-.login-form__new-text {
+.register-form__new-text {
   font-size: 16px;
   line-height: 19px;
   color: var(--text-grey-color);
 }
 
-.login-form__reg {
+.register-form__reg {
   margin-left: 5px;
   color: var(--second-color);
   text-decoration: none;
 }
 
-.login-form__reg:hover {
+.register-form__reg:hover {
   text-decoration: none;
 }
 
 @media (max-width: 1000px) {
-  .login-form {
+  .register-form {
     width: 530px;
     height: 500px;
     margin: 30px;
@@ -76,7 +76,7 @@
     border-radius: 20px;
   }
 
-  .login-form__title {
+  .register-form__title {
     margin-top: 30px;
     margin-bottom: 30px;
   }

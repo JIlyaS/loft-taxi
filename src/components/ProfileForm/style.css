@@ -1,0 +1,33 @@
+.profile-form__wrap {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 21px;
+}
+
+.profile-form__width {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-form__block {
+  margin-bottom: 22px;
+}
+
+.profile-form__block--mb10 {
+  margin-bottom: 12px;
+}
+
+.profile-form__block--width {
+  max-width: 47.7%; /* 160px */
+}
+
+.profile-form__block-btn {
+  text-align: center;
+}
+
+.profile-form__save-btn {
+  max-width: 353px;
+  height: 61px;
+  color: var(--black) !important;
+  background-color: var(--second-color) !important;
+}

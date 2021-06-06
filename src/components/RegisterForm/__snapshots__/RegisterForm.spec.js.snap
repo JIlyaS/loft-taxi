@@ -2,18 +2,19 @@
 
 exports[`RegisterForm renders correctly spanshot 1`] = `
 <div
-  className="login-form"
+  className="register-form"
+  data-testid="register-form"
 >
   <form
     onSubmit={[Function]}
   >
     <h2
-      className="login-form__title"
+      className="register-form__title"
     >
       Регистрация
     </h2>
     <div
-      className="login-form__block"
+      className="input register-form__block"
     >
       <div
         className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-1 MuiFormControl-marginDense MuiFormControl-fullWidth"
@@ -50,14 +51,14 @@ exports[`RegisterForm renders correctly spanshot 1`] = `
             onFocus={[Function]}
             placeholder="mail@mail.ru"
             required={true}
-            type="text"
+            type="email"
             value=""
           />
         </div>
       </div>
     </div>
     <div
-      className="login-form__block"
+      className="input register-form__block"
     >
       <div
         className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-1 MuiFormControl-marginDense MuiFormControl-fullWidth"
@@ -101,7 +102,7 @@ exports[`RegisterForm renders correctly spanshot 1`] = `
       </div>
     </div>
     <div
-      className="login-form__block"
+      className="input register-form__block"
     >
       <div
         className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-1 MuiFormControl-marginDense MuiFormControl-fullWidth"
@@ -145,7 +146,7 @@ exports[`RegisterForm renders correctly spanshot 1`] = `
       </div>
     </div>
     <button
-      className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-2 MuiButton-contained login-form__login-btn MuiButton-containedPrimary MuiButton-disableElevation MuiButton-fullWidth"
+      className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-2 MuiButton-contained register-form__login-btn MuiButton-containedPrimary MuiButton-disableElevation MuiButton-fullWidth"
       disabled={false}
       onBlur={[Function]}
       onDragLeave={[Function]}
@@ -168,16 +169,16 @@ exports[`RegisterForm renders correctly spanshot 1`] = `
       </span>
     </button>
     <div
-      className="login-form__new-block"
+      className="register-form__new-block"
     >
       <span
-        className="login-form__new-text"
+        className="register-form__new-text"
       >
         Уже зарегестрированны?
       </span>
       <a
-        className="login-form__reg"
-        href="/"
+        className="register-form__reg"
+        href="/login"
         onClick={[Function]}
       >
         Войти
