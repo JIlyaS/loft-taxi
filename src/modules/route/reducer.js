@@ -5,6 +5,9 @@ import {
   fetchRouteRequest,
   fetchRouteSuccess,
   fetchRouteFailure,
+  setFromRoute,
+  setToRoute,
+  setOrderSuccess
 } from './actions';
 
 const isLoadingRoute = handleActions(
@@ -18,11 +21,11 @@ const isLoadingRoute = handleActions(
 
 const route = handleActions(
   {
-    [fetchRouteRequest]: (_state, action) => null,
+    [fetchRouteRequest]: (_state, action) => [],
     [fetchRouteSuccess]: (_state, action) => action.payload,
-    [fetchRouteFailure]: (_state, action) => null, 
+    [fetchRouteFailure]: (_state, action) => [], 
   },
-  null
+  []
 );
 
 const routeError = handleActions(
@@ -34,9 +37,34 @@ const routeError = handleActions(
   null
 );
 
+const fromRoute = handleActions(
+  {
+    [setFromRoute]: (_state, action) => action.payload,
+  },
+  ''
+);
+
+const toRoute = handleActions(
+  {
+    [setToRoute]: (_state, action) => action.payload,
+  },
+  ''
+);
+
+const isRouteSuccess = handleActions(
+  {
+    [fetchRouteRequest]: (_state, action) => false,
+    [setOrderSuccess]: (_state, action) => action.payload,
+  },
+  false
+);
+
 
 export default combineReducers({
   isLoadingRoute,
   route,
   routeError,
+  fromRoute,
+  toRoute,
+  isRouteSuccess
 });

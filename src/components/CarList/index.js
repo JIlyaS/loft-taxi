@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {CardContent, Card} from '@material-ui/core';
 
@@ -26,14 +26,26 @@ const CarList = ({ carList }) => {
     <div className="car-list" data-testid="car-list">
       {
         carList.map((car) => (
-          <Card className="car-list__item" key={car.type}>
-            <CardContent className="car-list__content">
-              <h2 className="car-list__title">{car.name}</h2>
-              <span className="car-list__label">Стоимость</span>
-              <span className="car-list__cost">{car.cost}</span>
-              {getCarImage(car.type)}
-            </CardContent>
-          </Card>
+          <Fragment>
+            <input
+              className="car-list__radio"
+              type="radio" 
+              id={`car-list-${car.type}`} 
+              name={car.type}
+              value={car.type}
+              checked={car.checked}
+            />
+            <label className="car-list__label" htmlFor={`car-list-${car.type}`}>
+              <Card className="car-list__item" key={car.type}>
+                <CardContent className="car-list__content">
+                  <h2 className="car-list__title">{car.name}</h2>
+                  <span className="car-list__cost-name">Стоимость</span>
+                  <span className="car-list__cost">{car.cost}</span>
+                  {getCarImage(car.type)}
+                </CardContent>
+              </Card>
+            </label>
+          </Fragment>
         ))
       }
     </div>

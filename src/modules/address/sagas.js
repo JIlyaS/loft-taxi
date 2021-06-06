@@ -13,8 +13,7 @@ import {
 function* fetchAddressListSaga({ payload }) {
   try {
     const data = yield call(getAddressList, payload);
-    console.log("🚀 ~ file: sagas.js ~ line 16 ~ function*fetchAddressListSaga ~ data", data)
-    if (data.data.success === true) {
+    if (data.status === 200) {
       yield put(fetchAddressSuccess(data.data.addresses));
     } else {
       yield put(fetchAddressFailure(data.data.error));

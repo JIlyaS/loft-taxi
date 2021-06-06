@@ -4,6 +4,7 @@ import { getRoute } from '../../api/route';
 import {
   fetchRouteSuccess,
   fetchRouteFailure,
+  setOrderSuccess,
 } from './actions';
 
 import { 
@@ -13,9 +14,9 @@ import {
 function* fetchRouteSaga({ payload }) {
   try {
     const data = yield call(getRoute, payload);
-    console.log("🚀 ~ file: sagas.js ~ line 16 ~ function*fetchAddressListSaga ~ data", data)
-    if (data.data.success === true) {
-      // yield put(fetchRouteSuccess(data.data.addresses));
+    if (data.status === 200) {
+      yield put(setOrderSuccess(true));
+      yield put(fetchRouteSuccess(data.data));
     } else {
       yield put(fetchRouteFailure(data.data.error));
     }

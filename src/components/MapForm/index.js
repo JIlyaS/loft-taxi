@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -7,11 +7,14 @@ import { connect } from 'react-redux';
 
 import CarList from '../CarList';
 import Select from '../Select';
-// import Input from '../Input';
-// import DateInput from '../DateInput';
-// import Card from '../Card';
-// import { getCurrentCard, getLoadingViewCard } from '../../modules/card/selectors';
-// import { fetchGetCardRequest, fetchSetCardRequest } from '../../modules/card/actions';
+import { getAddressList, getLoadingAddress } from '../../modules/address/selectors';
+import { getFromRoute, getToRoute } from '../../modules/route/selectors';
+import { setFromRoute, setToRoute } from '../../modules/route/actions';
+
+import Brightness1Icon from '@material-ui/icons/Brightness1';
+import NearMeIcon from '@material-ui/icons/NearMe';
+import { fetchAddressRequest } from '../../modules/address/actions';
+import { fetchRouteRequest } from '../../modules/route/actions';
 
 import './style.css';
 
@@ -19,17 +22,20 @@ const carList = [
   {
     name: 'Стандарт',
     cost: 150,
-    type: 'standart'
+    type: 'standart',
+    checked: true,
   },
   {
     name: 'Премиум',
     cost: 250,
-    type: 'premium'
+    type: 'premium',
+    checked: false,
   },
   {
     name: 'Бизнес',
     cost: 300,
-    type: 'bisness'
+    type: 'bisness',
+    checked: false,
   },
 ];
 
@@ -41,71 +47,69 @@ const CssButton = withStyles({
     borderRadius: '70px'
   },
 })(Button);
-const MapForm = ({ 
-  // currentCard, 
-  // isLoadingViewCard, 
-  // fetchGetCardRequestAction, 
-  // fetchSetCardRequestAction 
+const MapForm = ({
+  fromRoute,
+  toRoute,
+  addressList,
+  isLoadingAddress,
+  setToRouteAction,
+  setFromRouteAction,
+  fetchRouteRequestAction,
+  fetchAddressRequestAction
 }) => {
-  // const initExpiryDate = currentCard.expiryDate ? new Date(currentCard.expiryDate) : new Date();
-  // const [cardNumber, setCardNumber] = useState(currentCard.cardNumber);
-  // const [cardName, setCardName] = useState(currentCard.cardName);
-  // const [cvc, setCVC] = useState(currentCard.cvc);
-  // const [expiryDate, setExpiryDate] = useState(initExpiryDate);
+  useEffect(() => {
+    fetchAddressRequestAction();
+  }, []);
 
-  // useEffect(() => {
-  //   fetchGetCardRequestAction();
-  // }, []);
-
-  // const handleNumberCardChange = (evt) => {
-  //   if (evt.target.value.length < 20) {
-  //     setCardNumber(evt.target.value);
-  //   }
-  // };
   const handleMapFormSubmit = (evt) => {
-    // evt.preventDefault();
-    // const formData = {
-    //   cardNumber,
-    //   expiryDate,
-    //   cardName,
-    //   cvc,
-    // };
-    // fetchSetCardRequestAction(formData);
+    evt.preventDefault();
+    const formData = {
+      from: fromRoute,
+      to: toRoute,
+    };
+    fetchRouteRequestAction(formData);
   };
 
-  // if (isLoadingViewCard) {
-  //   return 'Loading...';
-  // }
+  const handleFromRouteChange = (evt) => {
+    setFromRouteAction(evt.target.value);
+  }
+
+  const handleToRouteChange = (evt) => {
+    setToRouteAction(evt.target.value);
+  }
+
+  if (isLoadingAddress) {
+    return 'Loading...';
+  }
 
   return (
     <div className="map-form" data-testid="map-form">
       <form onSubmit={handleMapFormSubmit}>
         <div className="map-form__wrap">
           <div className="map-form__top-block">
-            <Select />
-            <Select />
-          </div>
-            {/* <Input 
-              type="text"
-              name="name" 
-              label="Имя владельца" 
-              placeholder="USER NAME"
-              value={cardName} 
-              classNameWrap="map-form__block map-form__block--mb10" 
-              onChange={(evt) => setCardName(evt.target.value)}
-              isAutofocus
-              isRequired
+            <Select
+              id="from"
+              list={addressList.filter((address) => address.label !== toRoute)}
+              className="map-form__select-first" 
+              icon={Brightness1Icon}
+              value={fromRoute}
+              iconStart={() => (
+                <Brightness1Icon className="map-form__brightness-icon" />
+              )}
+              onChange={handleFromRouteChange}
             />
-            <Input 
-              type="text"
-              name="card" 
-              label="Номер карты" 
-              placeholder="1111 1111 1111 1111"
-              value={cardNumber} 
-              classNameWrap="map-form__block" 
-              onChange={(evt) => handleNumberCardChange(evt)}
-              isRequired
-            /> */}
+            <div className="map-form__line" />
+            <Select
+              id="to"
+              list={addressList.filter((address) => address.label !== fromRoute)}
+              className="map-form__select-last"
+              value={toRoute}
+              iconStart={() => (
+                <NearMeIcon className="map-form__near-me-icon" />
+              )}
+              onChange={handleToRouteChange}
+            />
+          </div>
           <div className="map-form__bottom-block">
             <CarList carList={carList} />
             <div className="map-form__block-btn">
@@ -127,32 +131,38 @@ const MapForm = ({
   );
 }
 
-// MapForm.propTypes = {
-//   currentCard: PropTypes.object,
-//   isLoadingViewCard: PropTypes.bool.isRequired,
-//   fetchGetCardRequestAction: PropTypes.func.isRequired,
-//   fetchSetCardRequestAction: PropTypes.func.isRequired,
-// }
+MapForm.propTypes = {
+  addressList: PropTypes.array.isRequired,
+  isLoadingAddress: PropTypes.bool.isRequired,
+  setToRouteAction: PropTypes.func.isRequired,
+  setFromRouteAction: PropTypes.func.isRequired,
+  fetchRouteRequestAction: PropTypes.func.isRequired,
+  fetchAddressRequestAction: PropTypes.func.isRequired,
+}
 
-// MapForm.defaultProps = {
-//   currentCard: {},
-// }
+MapForm.defaultProps = {
+  addressList: [],
+  isLoadingAddress: false,
+}
 
-// const mapStateToProps = (state) => {
-//   return {
-//     currentCard: getCurrentCard(state),
-//     isLoadingViewCard: getLoadingViewCard(state),
-//   }
-// }
+const mapStateToProps = (state) => {
+  return {
+    addressList: getAddressList(state),
+    isLoadingAddress: getLoadingAddress(state),
+    fromRoute: getFromRoute(state),
+    toRoute: getToRoute(state),
+  }
+}
 
-// const mapDispatchToProps = {
-//   fetchGetCardRequestAction: fetchGetCardRequest,
-//   fetchSetCardRequestAction: fetchSetCardRequest,
-// }
+const mapDispatchToProps = {
+  setFromRouteAction: setFromRoute,
+  setToRouteAction: setToRoute,
+  fetchRouteRequestAction: fetchRouteRequest,
+  fetchAddressRequestAction: fetchAddressRequest,
+}
 
 export default connect(
-  // mapStateToProps, mapDispatchToProps
-  null, null
+  mapStateToProps, mapDispatchToProps
 )(MapForm);
 
 export {MapForm};

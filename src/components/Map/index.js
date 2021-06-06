@@ -1,8 +1,12 @@
 import React, { PureComponent } from 'react';
 import mapboxgl from 'mapbox-gl';
+import { connect } from 'react-redux';
+
+import { drawRoute } from '../../utils/map';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './style.css';
+import { getRoute } from '../../modules/route/selectors';
 
 class Map extends PureComponent {
   map = null;
@@ -18,6 +22,13 @@ class Map extends PureComponent {
       });
   }
 
+  componentDidUpdate() {
+    const { route } = this.props;
+    if (route.length) {
+      drawRoute(this.map, route);
+    }
+  }
+
   componentWillUnmount() {
     this.map.remove();
   }
@@ -30,7 +41,12 @@ class Map extends PureComponent {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    route: getRoute(state)
+  }
+}
 
-export default Map;
+export default connect(mapStateToProps)(Map);
 
 export {Map};

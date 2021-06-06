@@ -76,27 +76,37 @@ Array [
             className="map-form__top-block"
           >
             <div
-              className="select"
+              className="makeStyles-root-1 select"
             >
               <div
-                className="MuiFormControl-root makeStyles-formControl-1"
+                className="MuiFormControl-root MuiTextField-root map-form__select-first"
               >
-                <label
-                  className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-                  data-shrink={false}
-                  id="demo-simple-select-label"
-                >
-                  Age
-                </label>
+                
                 <div
-                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart"
                   onClick={[Function]}
                 >
                   <div
+                    className="MuiInputAdornment-root MuiInputAdornment-positionStart"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root map-form__brightness-icon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="10"
+                      />
+                    </svg>
+                  </div>
+                  <div
                     aria-haspopup="listbox"
-                    aria-labelledby="demo-simple-select-label demo-simple-select"
-                    className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-                    id="demo-simple-select"
+                    aria-labelledby="from"
+                    className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart"
+                    id="from"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onKeyDown={[Function]}
@@ -114,6 +124,7 @@ Array [
                   </div>
                   <input
                     aria-hidden={true}
+                    autoFocus={false}
                     className="MuiSelect-nativeInput"
                     onAnimationStart={[Function]}
                     onChange={[Function]}
@@ -135,27 +146,38 @@ Array [
               </div>
             </div>
             <div
-              className="select"
+              className="map-form__line"
+            />
+            <div
+              className="makeStyles-root-1 select"
             >
               <div
-                className="MuiFormControl-root makeStyles-formControl-1"
+                className="MuiFormControl-root MuiTextField-root map-form__select-last"
               >
-                <label
-                  className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-                  data-shrink={false}
-                  id="demo-simple-select-label"
-                >
-                  Age
-                </label>
+                
                 <div
-                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart"
                   onClick={[Function]}
                 >
                   <div
+                    className="MuiInputAdornment-root MuiInputAdornment-positionStart"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root map-form__near-me-icon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"
+                      />
+                    </svg>
+                  </div>
+                  <div
                     aria-haspopup="listbox"
-                    aria-labelledby="demo-simple-select-label demo-simple-select"
-                    className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-                    id="demo-simple-select"
+                    aria-labelledby="to"
+                    className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart"
+                    id="to"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onKeyDown={[Function]}
@@ -173,6 +195,7 @@ Array [
                   </div>
                   <input
                     aria-hidden={true}
+                    autoFocus={false}
                     className="MuiSelect-nativeInput"
                     onAnimationStart={[Function]}
                     onChange={[Function]}
@@ -201,102 +224,141 @@ Array [
               className="car-list"
               data-testid="car-list"
             >
-              <div
-                className="MuiPaper-root MuiCard-root car-list__item MuiPaper-elevation1 MuiPaper-rounded"
+              <input
+                checked={true}
+                className="car-list__radio"
+                id="car-list-standart"
+                name="standart"
+                type="radio"
+                value="standart"
+              />
+              <label
+                className="car-list__label"
+                htmlFor="car-list-standart"
               >
                 <div
-                  className="MuiCardContent-root car-list__content"
+                  className="MuiPaper-root MuiCard-root car-list__item MuiPaper-elevation1 MuiPaper-rounded"
                 >
-                  <h2
-                    className="car-list__title"
+                  <div
+                    className="MuiCardContent-root car-list__content"
                   >
-                    Стандарт
-                  </h2>
-                  <span
-                    className="car-list__label"
-                  >
-                    Стоимость
-                  </span>
-                  <span
-                    className="car-list__cost"
-                  >
-                    150
-                  </span>
-                  <img
-                    alt="Стандарт такси"
-                    className="car-list__img car-list__img--standart"
-                    height="73px"
-                    src="car-standart.svg"
-                    width="95px"
-                  />
+                    <h2
+                      className="car-list__title"
+                    >
+                      Стандарт
+                    </h2>
+                    <span
+                      className="car-list__cost-name"
+                    >
+                      Стоимость
+                    </span>
+                    <span
+                      className="car-list__cost"
+                    >
+                      150
+                    </span>
+                    <img
+                      alt="Стандарт такси"
+                      className="car-list__img car-list__img--standart"
+                      height="73px"
+                      src="car-standart.svg"
+                      width="95px"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div
-                className="MuiPaper-root MuiCard-root car-list__item MuiPaper-elevation1 MuiPaper-rounded"
+              </label>
+              <input
+                checked={false}
+                className="car-list__radio"
+                id="car-list-premium"
+                name="premium"
+                type="radio"
+                value="premium"
+              />
+              <label
+                className="car-list__label"
+                htmlFor="car-list-premium"
               >
                 <div
-                  className="MuiCardContent-root car-list__content"
+                  className="MuiPaper-root MuiCard-root car-list__item MuiPaper-elevation1 MuiPaper-rounded"
                 >
-                  <h2
-                    className="car-list__title"
+                  <div
+                    className="MuiCardContent-root car-list__content"
                   >
-                    Премиум
-                  </h2>
-                  <span
-                    className="car-list__label"
-                  >
-                    Стоимость
-                  </span>
-                  <span
-                    className="car-list__cost"
-                  >
-                    250
-                  </span>
-                  <img
-                    alt="Премиум такси"
-                    className="car-list__img car-list__img--premium"
-                    height="81px"
-                    src="car-premium.svg"
-                    width="118px"
-                  />
+                    <h2
+                      className="car-list__title"
+                    >
+                      Премиум
+                    </h2>
+                    <span
+                      className="car-list__cost-name"
+                    >
+                      Стоимость
+                    </span>
+                    <span
+                      className="car-list__cost"
+                    >
+                      250
+                    </span>
+                    <img
+                      alt="Премиум такси"
+                      className="car-list__img car-list__img--premium"
+                      height="81px"
+                      src="car-premium.svg"
+                      width="118px"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div
-                className="MuiPaper-root MuiCard-root car-list__item MuiPaper-elevation1 MuiPaper-rounded"
+              </label>
+              <input
+                checked={false}
+                className="car-list__radio"
+                id="car-list-bisness"
+                name="bisness"
+                type="radio"
+                value="bisness"
+              />
+              <label
+                className="car-list__label"
+                htmlFor="car-list-bisness"
               >
                 <div
-                  className="MuiCardContent-root car-list__content"
+                  className="MuiPaper-root MuiCard-root car-list__item MuiPaper-elevation1 MuiPaper-rounded"
                 >
-                  <h2
-                    className="car-list__title"
+                  <div
+                    className="MuiCardContent-root car-list__content"
                   >
-                    Бизнес
-                  </h2>
-                  <span
-                    className="car-list__label"
-                  >
-                    Стоимость
-                  </span>
-                  <span
-                    className="car-list__cost"
-                  >
-                    300
-                  </span>
-                  <img
-                    alt="Бизнесс такси"
-                    className="car-list__img car-list__img--business"
-                    height="64px"
-                    src="car-business.svg"
-                    width="100px"
-                  />
+                    <h2
+                      className="car-list__title"
+                    >
+                      Бизнес
+                    </h2>
+                    <span
+                      className="car-list__cost-name"
+                    >
+                      Стоимость
+                    </span>
+                    <span
+                      className="car-list__cost"
+                    >
+                      300
+                    </span>
+                    <img
+                      alt="Бизнесс такси"
+                      className="car-list__img car-list__img--business"
+                      height="64px"
+                      src="car-business.svg"
+                      width="100px"
+                    />
+                  </div>
                 </div>
-              </div>
+              </label>
             </div>
             <div
               className="map-form__block-btn"
             >
               <button
-                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-3 MuiButton-contained map-form__save-btn MuiButton-containedPrimary MuiButton-disableElevation MuiButton-fullWidth"
+                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-2 MuiButton-contained map-form__save-btn MuiButton-containedPrimary MuiButton-disableElevation MuiButton-fullWidth"
                 disabled={false}
                 onBlur={[Function]}
                 onDragLeave={[Function]}

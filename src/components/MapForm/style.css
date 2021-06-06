@@ -14,7 +14,7 @@
 .map-form__top-block {
   height: 125px;
   margin-bottom: 23px;
-  padding: 25px 22px 0;
+  padding: 0 22px;
   border-bottom: 1px solid #E0E0E0;
 }
 
@@ -38,4 +38,28 @@
 
 .map-form__block-btn {
   margin-top: 30px;
+}
+
+.map-form__line {
+  width: 100%;
+  height: 1px;
+  background-color: #E0E0E0;
+}
+
+.map-form__select-first {
+  margin-top: 20px !important;
+  margin-bottom: 10px !important;
+}
+
+.map-form__select-last {
+  margin-top: 10px !important;
+}
+
+.map-form__brightness-icon {
+  font-size: 14px !important;
+}
+
+.map-form__near-me-icon {
+  font-size: 16px !important;
+  color: #FDBF5A;
 }
