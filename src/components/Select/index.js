@@ -27,7 +27,6 @@ const Select = ({
   iconStart,
   onChange,
 }) => {
-  console.log("🚀 ~ file: index.js ~ line 30 ~ value", value)
   const classes = useStyles();
 
   return (

@@ -8,9 +8,7 @@ import {
   fetchRegisterRequest,
   fetchRegisterSuccess,
   fetchRegisterFailure,
-  // fetchLogoutRequest,
   logOut,
-  // fetchLogoutFailure,
 } from './actions';
 
 const isLoadingLogin = handleActions(

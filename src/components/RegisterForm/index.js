@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
 import Input from '../Input';
+import { getLoadingRegister } from '../../modules/auth/selectors';
 import { fetchRegisterRequest } from '../../modules/auth/actions';
 
 import './style.css';
@@ -18,12 +19,17 @@ const CssButton = withStyles({
     textTransform: 'capitalize',
     borderRadius: '70px'
   },
+  disabled: {
+    backgroundColor: '#D8D7D5 !important',
+    color: '#737373 !important'
+  }
 })(Button);
 
-const RegisterForm = ({fetchRegisterRequestAction}) => {
+const RegisterForm = ({isLoadingRegister, fetchRegisterRequestAction}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userName, setUserName] = useState('');
+  const disabledRegisterBtn = !email || !password || !userName || isLoadingRegister; 
 
   const handleRegisterSubmit = (evt) => {
     evt.preventDefault();
@@ -39,8 +45,9 @@ const RegisterForm = ({fetchRegisterRequestAction}) => {
           name="email" 
           label="Email" 
           placeholder="mail@mail.ru"
-          value={email} 
-          classNameWrap="register-form__block" 
+          value={email}
+          classNameWrap="register-form__block"
+          disabled={isLoadingRegister}
           onChange={(evt) => setEmail(evt.target.value)}
           isAutofocus
           isRequired
@@ -50,7 +57,8 @@ const RegisterForm = ({fetchRegisterRequestAction}) => {
           name="name" 
           label="Как вас зовут?" 
           placeholder="Петр Александрович"
-          value={userName} 
+          value={userName}
+          disabled={isLoadingRegister} 
           classNameWrap="register-form__block" 
           onChange={(evt) => setUserName(evt.target.value)}
           isRequired
@@ -61,6 +69,7 @@ const RegisterForm = ({fetchRegisterRequestAction}) => {
           label="Пароль" 
           placeholder="************"
           value={password} 
+          disabled={isLoadingRegister}
           classNameWrap="register-form__block" 
           onChange={(evt) => setPassword(evt.target.value)}
           isRequired
@@ -69,7 +78,8 @@ const RegisterForm = ({fetchRegisterRequestAction}) => {
           className="register-form__login-btn" 
           type="submit" 
           variant="contained" 
-          color="primary" 
+          color="primary"
+          disabled={disabledRegisterBtn}
           disableElevation 
           fullWidth
         >
@@ -85,10 +95,17 @@ const RegisterForm = ({fetchRegisterRequestAction}) => {
 }
 
 RegisterForm.propTypes = {
+  isLoadingRegister: PropTypes.bool.isRequired,
   fetchRegisterRequestAction: PropTypes.func.isRequired,
 }
 
-export default connect(null, {
+const mapStateToProps = (state) => {
+  return {
+    isLoadingRegister: getLoadingRegister(state),
+  };
+};
+
+export default connect(mapStateToProps, {
   fetchRegisterRequestAction: fetchRegisterRequest,
 })(RegisterForm);
 

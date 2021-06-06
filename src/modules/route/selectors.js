@@ -20,3 +20,8 @@ export const getRouteSuccess = createSelector(
   state => state.route.isRouteSuccess,
   isRouteSuccess => isRouteSuccess
 );
+
+export const getLoadingRoute = createSelector(
+  state => state.route.isLoadingRoute,
+  isLoadingRoute => isLoadingRoute
+);

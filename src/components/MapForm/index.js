@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import CarList from '../CarList';
 import Select from '../Select';
 import { getAddressList, getLoadingAddress } from '../../modules/address/selectors';
-import { getFromRoute, getToRoute } from '../../modules/route/selectors';
+import { getFromRoute, getToRoute, getLoadingRoute } from '../../modules/route/selectors';
 import { setFromRoute, setToRoute } from '../../modules/route/actions';
 
 import Brightness1Icon from '@material-ui/icons/Brightness1';
@@ -46,10 +46,15 @@ const CssButton = withStyles({
     textTransform: 'capitalize',
     borderRadius: '70px'
   },
+  disabled: {
+    backgroundColor: '#D8D7D5 !important',
+    color: '#737373 !important'
+  },
 })(Button);
 const MapForm = ({
   fromRoute,
   toRoute,
+  isLoadingRoute,
   addressList,
   isLoadingAddress,
   setToRouteAction,
@@ -60,6 +65,8 @@ const MapForm = ({
   useEffect(() => {
     fetchAddressRequestAction();
   }, []);
+
+  const isDisabledOrderBtn = !fromRoute || !toRoute || isLoadingAddress || isLoadingRoute;
 
   const handleMapFormSubmit = (evt) => {
     evt.preventDefault();
@@ -78,15 +85,11 @@ const MapForm = ({
     setToRouteAction(evt.target.value);
   }
 
-  if (isLoadingAddress) {
-    return 'Loading...';
-  }
-
   return (
     <div className="map-form" data-testid="map-form">
       <form onSubmit={handleMapFormSubmit}>
         <div className="map-form__wrap">
-          <div className="map-form__top-block">
+          <div className="map-form__top-block" data-testid="map-form-top">
             <Select
               id="from"
               list={addressList.filter((address) => address.label !== toRoute)}
@@ -110,14 +113,15 @@ const MapForm = ({
               onChange={handleToRouteChange}
             />
           </div>
-          <div className="map-form__bottom-block">
+          <div className="map-form__bottom-block" data-testid="map-form-bottom">
             <CarList carList={carList} />
             <div className="map-form__block-btn">
               <CssButton 
                 className="map-form__save-btn" 
                 type="submit" 
                 variant="contained" 
-                color="primary" 
+                color="primary"
+                disabled={isDisabledOrderBtn}
                 disableElevation 
                 fullWidth
               >
@@ -133,6 +137,7 @@ const MapForm = ({
 
 MapForm.propTypes = {
   addressList: PropTypes.array.isRequired,
+  isLoadingRoute: PropTypes.bool.isRequired,
   isLoadingAddress: PropTypes.bool.isRequired,
   setToRouteAction: PropTypes.func.isRequired,
   setFromRouteAction: PropTypes.func.isRequired,
@@ -151,6 +156,7 @@ const mapStateToProps = (state) => {
     isLoadingAddress: getLoadingAddress(state),
     fromRoute: getFromRoute(state),
     toRoute: getToRoute(state),
+    isLoadingRoute: getLoadingRoute(state),
   }
 }
 

@@ -1,6 +1,5 @@
 import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
-// import { cleanup, render } from '@testing-library/react';
 
 import {Input} from './';
 

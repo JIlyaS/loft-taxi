@@ -35,7 +35,11 @@ const CarList = ({ carList }) => {
               value={car.type}
               checked={car.checked}
             />
-            <label className="car-list__label" htmlFor={`car-list-${car.type}`}>
+            <label 
+              className="car-list__label" 
+              htmlFor={`car-list-${car.type}`} 
+              data-testid={`car-list-${car.type}`}
+            >
               <Card className="car-list__item" key={car.type}>
                 <CardContent className="car-list__content">
                   <h2 className="car-list__title">{car.name}</h2>

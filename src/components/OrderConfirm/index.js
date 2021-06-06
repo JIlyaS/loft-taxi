@@ -35,6 +35,7 @@ const OrderConfirm = ({
           type="button" 
           variant="contained" 
           color="primary"
+          data-testid="order-confirm-btn"
           onClick={() => setOrderSuccessAction(false)}
           disableElevation 
           fullWidth

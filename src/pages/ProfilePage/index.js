@@ -6,6 +6,7 @@ import ProfileContent from '../../components/ProfileContent';
 import './style.css';
 
 const ProfilePage = () => {
+
   return (
     <Fragment>
       <Header />

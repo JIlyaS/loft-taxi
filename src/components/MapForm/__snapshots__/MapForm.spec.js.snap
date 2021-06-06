@@ -1,0 +1,332 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapForm renders correctly spanshot 1`] = `
+<div
+  className="map-form"
+  data-testid="map-form"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="map-form__wrap"
+    >
+      <div
+        className="map-form__top-block"
+        data-testid="map-form-top"
+      >
+        <div
+          className="makeStyles-root-1 select"
+        >
+          <div
+            className="MuiFormControl-root MuiTextField-root map-form__select-first"
+          >
+            
+            <div
+              className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart"
+              onClick={[Function]}
+            >
+              <div
+                className="MuiInputAdornment-root MuiInputAdornment-positionStart"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root map-form__brightness-icon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                  />
+                </svg>
+              </div>
+              <div
+                aria-haspopup="listbox"
+                aria-labelledby="from"
+                className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart"
+                id="from"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "&#8203;",
+                    }
+                  }
+                />
+              </div>
+              <input
+                aria-hidden={true}
+                autoFocus={false}
+                className="MuiSelect-nativeInput"
+                onAnimationStart={[Function]}
+                onChange={[Function]}
+                required={false}
+                tabIndex={-1}
+                value=""
+              />
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          className="map-form__line"
+        />
+        <div
+          className="makeStyles-root-1 select"
+        >
+          <div
+            className="MuiFormControl-root MuiTextField-root map-form__select-last"
+          >
+            
+            <div
+              className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart"
+              onClick={[Function]}
+            >
+              <div
+                className="MuiInputAdornment-root MuiInputAdornment-positionStart"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root map-form__near-me-icon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"
+                  />
+                </svg>
+              </div>
+              <div
+                aria-haspopup="listbox"
+                aria-labelledby="to"
+                className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart"
+                id="to"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "&#8203;",
+                    }
+                  }
+                />
+              </div>
+              <input
+                aria-hidden={true}
+                autoFocus={false}
+                className="MuiSelect-nativeInput"
+                onAnimationStart={[Function]}
+                onChange={[Function]}
+                required={false}
+                tabIndex={-1}
+                value=""
+              />
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="map-form__bottom-block"
+        data-testid="map-form-bottom"
+      >
+        <div
+          className="car-list"
+          data-testid="car-list"
+        >
+          <input
+            checked={true}
+            className="car-list__radio"
+            id="car-list-standart"
+            name="standart"
+            type="radio"
+            value="standart"
+          />
+          <label
+            className="car-list__label"
+            data-testid="car-list-standart"
+            htmlFor="car-list-standart"
+          >
+            <div
+              className="MuiPaper-root MuiCard-root car-list__item MuiPaper-elevation1 MuiPaper-rounded"
+            >
+              <div
+                className="MuiCardContent-root car-list__content"
+              >
+                <h2
+                  className="car-list__title"
+                >
+                  Стандарт
+                </h2>
+                <span
+                  className="car-list__cost-name"
+                >
+                  Стоимость
+                </span>
+                <span
+                  className="car-list__cost"
+                >
+                  150
+                </span>
+                <img
+                  alt="Стандарт такси"
+                  className="car-list__img car-list__img--standart"
+                  height="73px"
+                  src="car-standart.svg"
+                  width="95px"
+                />
+              </div>
+            </div>
+          </label>
+          <input
+            checked={false}
+            className="car-list__radio"
+            id="car-list-premium"
+            name="premium"
+            type="radio"
+            value="premium"
+          />
+          <label
+            className="car-list__label"
+            data-testid="car-list-premium"
+            htmlFor="car-list-premium"
+          >
+            <div
+              className="MuiPaper-root MuiCard-root car-list__item MuiPaper-elevation1 MuiPaper-rounded"
+            >
+              <div
+                className="MuiCardContent-root car-list__content"
+              >
+                <h2
+                  className="car-list__title"
+                >
+                  Премиум
+                </h2>
+                <span
+                  className="car-list__cost-name"
+                >
+                  Стоимость
+                </span>
+                <span
+                  className="car-list__cost"
+                >
+                  250
+                </span>
+                <img
+                  alt="Премиум такси"
+                  className="car-list__img car-list__img--premium"
+                  height="81px"
+                  src="car-premium.svg"
+                  width="118px"
+                />
+              </div>
+            </div>
+          </label>
+          <input
+            checked={false}
+            className="car-list__radio"
+            id="car-list-bisness"
+            name="bisness"
+            type="radio"
+            value="bisness"
+          />
+          <label
+            className="car-list__label"
+            data-testid="car-list-bisness"
+            htmlFor="car-list-bisness"
+          >
+            <div
+              className="MuiPaper-root MuiCard-root car-list__item MuiPaper-elevation1 MuiPaper-rounded"
+            >
+              <div
+                className="MuiCardContent-root car-list__content"
+              >
+                <h2
+                  className="car-list__title"
+                >
+                  Бизнес
+                </h2>
+                <span
+                  className="car-list__cost-name"
+                >
+                  Стоимость
+                </span>
+                <span
+                  className="car-list__cost"
+                >
+                  300
+                </span>
+                <img
+                  alt="Бизнесс такси"
+                  className="car-list__img car-list__img--business"
+                  height="64px"
+                  src="car-business.svg"
+                  width="100px"
+                />
+              </div>
+            </div>
+          </label>
+        </div>
+        <div
+          className="map-form__block-btn"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-2 MuiButton-contained map-form__save-btn MuiButton-containedPrimary MuiButton-disableElevation Mui-disabled WithStyles(ForwardRef(Button))-disabled-3 MuiButton-fullWidth Mui-disabled"
+            disabled={true}
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={-1}
+            type="submit"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Заказать
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+`;

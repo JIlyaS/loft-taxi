@@ -146,8 +146,8 @@ exports[`RegisterForm renders correctly spanshot 1`] = `
       </div>
     </div>
     <button
-      className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-2 MuiButton-contained register-form__login-btn MuiButton-containedPrimary MuiButton-disableElevation MuiButton-fullWidth"
-      disabled={false}
+      className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-2 MuiButton-contained register-form__login-btn MuiButton-containedPrimary MuiButton-disableElevation Mui-disabled WithStyles(ForwardRef(Button))-disabled-3 MuiButton-fullWidth Mui-disabled"
+      disabled={true}
       onBlur={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
@@ -159,7 +159,7 @@ exports[`RegisterForm renders correctly spanshot 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      tabIndex={0}
+      tabIndex={-1}
       type="submit"
     >
       <span

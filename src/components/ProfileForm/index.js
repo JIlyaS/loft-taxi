@@ -8,7 +8,8 @@ import { connect } from 'react-redux';
 import Input from '../Input';
 import DateInput from '../DateInput';
 import Card from '../Card';
-import { getCurrentCard, getLoadingViewCard } from '../../modules/card/selectors';
+import Loader from '../Loader';
+import { getCurrentCard, getLoadingViewCard, getLoadingUpdateCard } from '../../modules/card/selectors';
 import { fetchGetCardRequest, fetchSetCardRequest } from '../../modules/card/actions';
 
 import './style.css';
@@ -21,12 +22,26 @@ const CssButton = withStyles({
     textTransform: 'capitalize',
     borderRadius: '70px'
   },
+  disabled: {
+    backgroundColor: '#D8D7D5 !important',
+    color: '#737373 !important'
+  }
 })(Button);
-const ProfileForm = ({ currentCard, isLoadingViewCard,  fetchGetCardRequestAction, fetchSetCardRequestAction }) => {
+const ProfileForm = ({ 
+  currentCard,
+  isLoadingUpdateCard,
+  isLoadingViewCard,  
+  fetchGetCardRequestAction, 
+  fetchSetCardRequestAction 
+}) => {
   const initExpiryDate = currentCard.expiryDate ? new Date(currentCard.expiryDate) : new Date();
-  const [cardNumber, setCardNumber] = useState(currentCard.cardNumber);
-  const [cardName, setCardName] = useState(currentCard.cardName);
-  const [cvc, setCVC] = useState(currentCard.cvc);
+  const initCardNumber = currentCard.cardNumber ? currentCard.cardNumber : '';
+  const initCardName = currentCard.cardName ? currentCard.cardName : '';
+  const initCVC = currentCard.cvc ? currentCard.cvc : '';
+  
+  const [cardNumber, setCardNumber] = useState(initCardNumber);
+  const [cardName, setCardName] = useState(initCardName);
+  const [cvc, setCVC] = useState(initCVC);
   const [expiryDate, setExpiryDate] = useState(initExpiryDate);
 
   useEffect(() => {
@@ -50,7 +65,7 @@ const ProfileForm = ({ currentCard, isLoadingViewCard,  fetchGetCardRequestActio
   };
 
   if (isLoadingViewCard) {
-    return 'Loading...';
+    return <Loader />;
   }
 
   return (
@@ -63,8 +78,9 @@ const ProfileForm = ({ currentCard, isLoadingViewCard,  fetchGetCardRequestActio
               name="name" 
               label="Имя владельца" 
               placeholder="USER NAME"
-              value={cardName} 
+              value={cardName}
               classNameWrap="profile-form__block profile-form__block--mb10" 
+              disabled={isLoadingUpdateCard}
               onChange={(evt) => setCardName(evt.target.value)}
               isAutofocus
               isRequired
@@ -75,6 +91,7 @@ const ProfileForm = ({ currentCard, isLoadingViewCard,  fetchGetCardRequestActio
               label="Номер карты" 
               placeholder="1111 1111 1111 1111"
               value={cardNumber} 
+              disabled={isLoadingUpdateCard}
               classNameWrap="profile-form__block" 
               onChange={(evt) => handleNumberCardChange(evt)}
               isRequired
@@ -87,6 +104,7 @@ const ProfileForm = ({ currentCard, isLoadingViewCard,  fetchGetCardRequestActio
                 placeholder="MM/YY"
                 label="MM/YY"
                 value={expiryDate}
+                disabled={isLoadingUpdateCard}
                 setSelectedDate={setExpiryDate}
                 classNameWrap="profile-form__block profile-form__block--width" 
                 isRequired
@@ -97,6 +115,7 @@ const ProfileForm = ({ currentCard, isLoadingViewCard,  fetchGetCardRequestActio
                 label="CVC" 
                 placeholder="667"
                 value={cvc} 
+                disabled={isLoadingUpdateCard}
                 classNameWrap="profile-form__block profile-form__block--width" 
                 onChange={(evt) => setCVC(evt.target.value)}
                 isRequired
@@ -112,7 +131,8 @@ const ProfileForm = ({ currentCard, isLoadingViewCard,  fetchGetCardRequestActio
             className="profile-form__save-btn" 
             type="submit" 
             variant="contained" 
-            color="primary" 
+            color="primary"
+            disabled={isLoadingUpdateCard}
             disableElevation 
             fullWidth
           >
@@ -127,6 +147,7 @@ const ProfileForm = ({ currentCard, isLoadingViewCard,  fetchGetCardRequestActio
 ProfileForm.propTypes = {
   currentCard: PropTypes.object,
   isLoadingViewCard: PropTypes.bool.isRequired,
+  isLoadingUpdateCard: PropTypes.bool.isRequired,
   fetchGetCardRequestAction: PropTypes.func.isRequired,
   fetchSetCardRequestAction: PropTypes.func.isRequired,
 }
@@ -137,6 +158,7 @@ ProfileForm.defaultProps = {
 
 const mapStateToProps = (state) => {
   return {
+    isLoadingUpdateCard: getLoadingUpdateCard(state),
     currentCard: getCurrentCard(state),
     isLoadingViewCard: getLoadingViewCard(state),
   }

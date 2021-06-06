@@ -74,6 +74,7 @@ Array [
         >
           <div
             className="map-form__top-block"
+            data-testid="map-form-top"
           >
             <div
               className="makeStyles-root-1 select"
@@ -219,6 +220,7 @@ Array [
           </div>
           <div
             className="map-form__bottom-block"
+            data-testid="map-form-bottom"
           >
             <div
               className="car-list"
@@ -234,6 +236,7 @@ Array [
               />
               <label
                 className="car-list__label"
+                data-testid="car-list-standart"
                 htmlFor="car-list-standart"
               >
                 <div
@@ -277,6 +280,7 @@ Array [
               />
               <label
                 className="car-list__label"
+                data-testid="car-list-premium"
                 htmlFor="car-list-premium"
               >
                 <div
@@ -320,6 +324,7 @@ Array [
               />
               <label
                 className="car-list__label"
+                data-testid="car-list-bisness"
                 htmlFor="car-list-bisness"
               >
                 <div
@@ -358,8 +363,8 @@ Array [
               className="map-form__block-btn"
             >
               <button
-                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-2 MuiButton-contained map-form__save-btn MuiButton-containedPrimary MuiButton-disableElevation MuiButton-fullWidth"
-                disabled={false}
+                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-2 MuiButton-contained map-form__save-btn MuiButton-containedPrimary MuiButton-disableElevation Mui-disabled WithStyles(ForwardRef(Button))-disabled-3 MuiButton-fullWidth Mui-disabled"
+                disabled={true}
                 onBlur={[Function]}
                 onDragLeave={[Function]}
                 onFocus={[Function]}
@@ -371,7 +376,7 @@ Array [
                 onTouchEnd={[Function]}
                 onTouchMove={[Function]}
                 onTouchStart={[Function]}
-                tabIndex={0}
+                tabIndex={-1}
                 type="submit"
               >
                 <span

@@ -1,6 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { login, register } from '../../api/auth';
+import { showToastError } from '../../utils/toast';
 import {
   fetchLoginSuccess,
   fetchLoginFailure,
@@ -13,22 +14,24 @@ import {
   FETCH_REGISTER_REQUEST, 
 } from '../../constants/actionTypes';
 
-function* fetchLoginSaga({ payload }) {
+export function* fetchLoginSaga({ payload }) {
   try {
     const data = yield call(login, payload);
     if (data.data.success === true) {
       localStorage.setItem('token', data.data.token);
       yield put(fetchLoginSuccess(data.data.token));
     } else {
+      showToastError(data.data.error);
       yield put(fetchLoginFailure(data.data.error));
     }
   } catch (error) {
     console.error(error);
+    showToastError('Ошибка авторизации!');
     yield put(fetchLoginFailure(error));
   }
 }
 
-function* fetchRegisterSaga({ payload }) {
+export function* fetchRegisterSaga({ payload }) {
   try {
     const { email, password, userName } = payload;
     const name = userName.split(' ')[0];
@@ -38,10 +41,12 @@ function* fetchRegisterSaga({ payload }) {
       localStorage.setItem('token', data.data.token);
       yield put(fetchRegisterSuccess(data.data.token));
     } else {
+      showToastError(data.data.error);
       yield put(fetchRegisterFailure(data.data.error));
     }
   } catch (error) {
     console.error(error);
+    showToastError('Ошибка авторизации!');
     yield put(fetchRegisterFailure(error));
   }
 }

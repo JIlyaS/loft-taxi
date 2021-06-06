@@ -14,3 +14,8 @@ export const getUpdateSuccess = createSelector(
   state => state.card.isUpdateSuccess,
   isUpdateSuccess => isUpdateSuccess
 );
+
+export const getLoadingUpdateCard = createSelector(
+  state => state.card.isLoadingUpdateCard,
+  isLoadingUpdateCard => isLoadingUpdateCard
+);
