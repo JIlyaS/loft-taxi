@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select renders correctly snapshot 1`] = `
+<div
+  className="makeStyles-root-1 select"
+>
+  <div
+    className="MuiFormControl-root MuiTextField-root"
+  >
+    
+    <div
+      className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiInputAdornment-root MuiInputAdornment-positionStart"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root map-form__brightness-icon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="10"
+          />
+        </svg>
+      </div>
+      <div
+        aria-haspopup="listbox"
+        aria-labelledby="from"
+        className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart"
+        id="from"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        role="button"
+        tabIndex={0}
+      >
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "&#8203;",
+            }
+          }
+        />
+      </div>
+      <input
+        aria-hidden={true}
+        autoFocus={false}
+        className="MuiSelect-nativeInput"
+        onAnimationStart={[Function]}
+        onChange={[Function]}
+        required={false}
+        tabIndex={-1}
+        value="Пулково"
+      />
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSelect-icon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;

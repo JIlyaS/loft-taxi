@@ -28,6 +28,7 @@ const Input = forwardRef((props, ref) => {
     isAutofocus, 
     isRequired,
     register,
+    disabled,
     onChange 
   } = props;
   return (
@@ -42,6 +43,7 @@ const Input = forwardRef((props, ref) => {
         placeholder={placeholder} 
         size="small"
         margin="dense"
+        disabled={disabled}
         // onChange={onChange}
         required={isRequired}
         autoFocus={isAutofocus}
@@ -60,6 +62,7 @@ Input.propTypes = {
   value: PropTypes.string,
   register: PropTypes.any,
   classNameWrap: PropTypes.string,
+  disabled: PropTypes.bool, 
   isAutofocus: PropTypes.bool,
   isRequired: PropTypes.bool, 
   onChange: PropTypes.func,
@@ -69,6 +72,7 @@ Input.defaultProps = {
   type: 'text',
   value: '',
   classNameWrap: '',
+  disabled: false,
   isAutofocus: false,
   isRequired: false,
   register: () => {},

@@ -1,0 +1,11 @@
+/* .MuiSelect-nativeInput {
+  height: 34px !important;
+} */
+
+.select .MuiInput-underline::before {
+  border: none !important;
+}
+
+.select .MuiInput-underline::after {
+  border: none !important;
+}
