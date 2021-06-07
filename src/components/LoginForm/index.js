@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -22,26 +23,30 @@ const CssButton = withStyles({
 })(Button);
 
 const LoginForm = ({fetchLoginRequestAction}) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleLoginSubmit = (evt) => {
-    evt.preventDefault();
+  const { register, handleSubmit } = useForm();
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+
+  const handleLoginSubmit = (data) => {
+  console.log("🚀 ~ file: index.js ~ line 32 ~ handleLoginSubmit ~ data", data)
+    const { email, password } = data;  
     fetchLoginRequestAction({email, password});
   };
 
   return (
     <div className="login-form" data-testid="login-form">
-      <form onSubmit={handleLoginSubmit}>
+      <form onSubmit={handleSubmit(handleLoginSubmit)}>
         <h2 className="login-form__title">Войти</h2>
         <Input 
           type="email"
           name="email" 
           label="Email" 
           placeholder="mail@mail.ru"
-          value={email} 
-          classNameWrap="login-form__block" 
-          onChange={(evt) => setEmail(evt.target.value)}
+          // value={email} 
+          register={register}
+          classNameWrap="login-form__block"
+          // onChange={(evt) => setEmail(evt.target.value)}
           isAutofocus
           isRequired
         />
@@ -50,9 +55,10 @@ const LoginForm = ({fetchLoginRequestAction}) => {
           name="password" 
           label="Пароль" 
           placeholder="************"
-          value={password} 
-          classNameWrap="login-form__block" 
-          onChange={(evt) => setPassword(evt.target.value)}
+          // value={password} 
+          register={register}
+          classNameWrap="login-form__block"
+          // onChange={(evt) => setPassword(evt.target.value)}
           isRequired
         />
         <div className="login-form__link-block">
