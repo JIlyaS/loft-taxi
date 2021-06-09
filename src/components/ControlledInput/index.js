@@ -17,7 +17,7 @@ const CssTextField = withStyles({
 })(TextField);
 
 
-const Input = ({
+const ControlledInput = ({
   name, 
   type, 
   label, 
@@ -25,10 +25,10 @@ const Input = ({
   classNameWrap,
   isAutofocus, 
   isRequired,
-  register,
   defaultValue,
+  value,
+  onChange,
   disabled,
-  validate,
   isError,
 }) => {
   return (
@@ -39,47 +39,48 @@ const Input = ({
         name={name}
         type={type}
         placeholder={placeholder}
-        defaultValue={defaultValue}
         size="small"
         margin="dense"
+        defaultValue={defaultValue}
+        value={value}
+        onChange={onChange}
         disabled={disabled}
         className={cn({'input--error': isError})}
         required={isRequired}
         autoFocus={isAutofocus}
         fullWidth
-        {... register(name, validate)}
       />
     </div>
   );
 };
 
-Input.propTypes = {
+ControlledInput.propTypes = {
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired, 
   placeholder: PropTypes.string.isRequired,
   register: PropTypes.any,
-  defaultValue: PropTypes.any,
   classNameWrap: PropTypes.string,
-  validate: PropTypes.object,
+  defaultValue: PropTypes.string,
+  value: PropTypes.string,
   disabled: PropTypes.bool, 
   isAutofocus: PropTypes.bool,
   isRequired: PropTypes.bool, 
   isError: PropTypes.any, 
+  onChange: PropTypes.func.isRequired,
 };
 
-Input.defaultProps = {
+ControlledInput.defaultProps = {
   type: 'text',
   classNameWrap: '',
   disabled: false,
-  defaultValue: '',
+  value: '',
   isAutofocus: false,
   isRequired: false,
   isError: false,
-  validate: {},
-  register: () => {},
+  onChange: () => {},
 };
 
-export default Input;
+export default ControlledInput;
 
-export {Input};
+export {ControlledInput};

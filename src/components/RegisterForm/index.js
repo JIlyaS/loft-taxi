@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { useForm } from 'react-hook-form';
 
 import Input from '../Input';
 import { getLoadingRegister } from '../../modules/auth/selectors';
@@ -26,54 +27,73 @@ const CssButton = withStyles({
 })(Button);
 
 const RegisterForm = ({isLoadingRegister, fetchRegisterRequestAction}) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [userName, setUserName] = useState('');
-  const disabledRegisterBtn = !email || !password || !userName || isLoadingRegister; 
 
-  const handleRegisterSubmit = (evt) => {
-    evt.preventDefault();
-    fetchRegisterRequestAction({email, password, userName});
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const disabledRegisterBtn = isLoadingRegister; 
+
+  const handleRegisterSubmit = (data) => {
+    const { email, password, userName } = data;
+    fetchRegisterRequestAction({email, password, name: userName});
   };
 
   return (
     <div className="register-form"  data-testid="register-form">
-      <form onSubmit={handleRegisterSubmit}>
+      <form noValidate onSubmit={handleSubmit(handleRegisterSubmit)}>
         <h2 className="register-form__title">Регистрация</h2>
         <Input 
           type="email"
           name="email" 
           label="Email" 
           placeholder="mail@mail.ru"
-          value={email}
           classNameWrap="register-form__block"
+          register={register}
+          validate={{
+            required: true
+          }}
           disabled={isLoadingRegister}
-          onChange={(evt) => setEmail(evt.target.value)}
+          isError={errors.email?.type}
           isAutofocus
           isRequired
         />
+        <span className="register-form__error-text">{errors.email?.type === 'required' && 'Введите email'}</span>
         <Input 
           type="text"
           name="name" 
           label="Как вас зовут?" 
           placeholder="Петр Александрович"
-          value={userName}
-          disabled={isLoadingRegister} 
+          disabled={isLoadingRegister}
           classNameWrap="register-form__block" 
-          onChange={(evt) => setUserName(evt.target.value)}
+          register={register}
+          validate={{
+            required: true, minLength: 4
+          }}
+          isError={errors.name?.type}
           isRequired
         />
+        <span className="register-form__error-text">
+          {errors.name?.type === 'required' && 'Введите имя'}
+          {errors.name?.type === 'minLength' && 'Имя должно содержать минимум 4 символа'}
+        </span>
         <Input 
           type="password"
           name="password" 
-          label="Пароль" 
+          label="Придумайте пароль" 
           placeholder="************"
-          value={password} 
+          register={register}
+          validate={{
+            required: true, minLength: 6
+          }}
           disabled={isLoadingRegister}
           classNameWrap="register-form__block" 
-          onChange={(evt) => setPassword(evt.target.value)}
+          isError={
+            errors.password?.type
+          }
           isRequired
         />
+        <span className="register-form__error-text">
+          {errors.password?.type === 'required' && 'Введите пароль'}
+          {errors.password?.type === 'minLength' && 'Пароль должен содержать минимум 6 символов'}
+        </span>
         <CssButton 
           className="register-form__login-btn" 
           type="submit" 

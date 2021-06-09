@@ -9,16 +9,18 @@
   justify-content: space-between;
 }
 
+.profile-form__left-block {
+  max-width: 355px;
+  width: 100%;
+}
+
 .profile-form__block {
-  margin-bottom: 22px;
+  /* margin-bottom: 22px; */
 }
 
-.profile-form__block--mb10 {
-  margin-bottom: 12px;
-}
-
-.profile-form__block--width {
-  max-width: 47.7%; /* 160px */
+.profile-form__input-block {
+  width: 100%;
+  max-width: 160px;
 }
 
 .profile-form__block-btn {
@@ -30,4 +32,15 @@
   height: 61px;
   color: var(--black) !important;
   background-color: var(--second-color) !important;
+}
+
+.profile-form__error-text {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FF0000;
+}
+
+.input--error .MuiInputLabel-root.Mui-focused {
+  color: #FF0000 !important;
 }

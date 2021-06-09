@@ -1,38 +1,42 @@
 import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 
-import {Input} from './';
+import {ControlledInput} from '.';
 
 const defaultProps = {
   type: 'text',
   name: '',
   label: '',
   placeholder: '',
+  value: '',
   classNameWrap: '',
   isAutofocus: false,
   isRequired: false,
+  onChange: () => {},
 };
 
-const TestInput = props => <Input {...defaultProps} {...props} />;
+const TestControlledInput = props => <ControlledInput {...defaultProps} {...props} />;
 
-describe('Input', () => {
+describe('ControlledInput', () => {
   it('renders correctly snapshot', () => {
-      const tree = renderer.create(<TestInput />).toJSON();
+      const tree = renderer.create(<TestControlledInput />).toJSON();
       expect(tree).toMatchSnapshot();
     });
   
     it("render card correctly with null props", () => {
       const props = {
         type: 'text',
-        name: 'card',
+        name: '',
         label: '',
         placeholder: '',
+        value: '',
         classNameWrap: '',
         isAutofocus: false,
         isRequired: false,
+        onChange: () => {},
       };
-      const InputComponent = mount(<TestInput {...props} />);
+      const InputComponent = mount(<TestControlledInput {...props} />);
       expect(InputComponent.prop('type')).toEqual('text');
-      expect(InputComponent.prop('name')).toEqual('card');
+      expect(InputComponent.prop('value')).toEqual('');
     });
 });

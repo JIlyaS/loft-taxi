@@ -6,6 +6,7 @@ exports[`LoginForm renders correctly spanshot 1`] = `
   data-testid="login-form"
 >
   <form
+    noValidate={true}
     onSubmit={[Function]}
   >
     <h2
@@ -42,6 +43,7 @@ exports[`LoginForm renders correctly spanshot 1`] = `
             aria-invalid={false}
             autoFocus={true}
             className="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense"
+            defaultValue=""
             disabled={false}
             id="email"
             name="email"
@@ -52,11 +54,13 @@ exports[`LoginForm renders correctly spanshot 1`] = `
             placeholder="mail@mail.ru"
             required={true}
             type="email"
-            value=""
           />
         </div>
       </div>
     </div>
+    <span
+      className="login-form__error-text"
+    />
     <div
       className="input login-form__block"
     >
@@ -86,6 +90,7 @@ exports[`LoginForm renders correctly spanshot 1`] = `
             aria-invalid={false}
             autoFocus={false}
             className="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense"
+            defaultValue=""
             disabled={false}
             id="password"
             name="password"
@@ -96,11 +101,13 @@ exports[`LoginForm renders correctly spanshot 1`] = `
             placeholder="************"
             required={true}
             type="password"
-            value=""
           />
         </div>
       </div>
     </div>
+    <span
+      className="login-form__error-text"
+    />
     <div
       className="login-form__link-block"
     >

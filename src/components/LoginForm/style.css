@@ -14,7 +14,7 @@
 }
 
 .login-form__block {
-  margin-bottom: 20px;
+  
 }
 
 .login-form__link-block {
@@ -26,6 +26,7 @@
 
 .login-form__forget-pass {
   display: inline-block;
+  margin-top: 5px;
   color: var(--text-grey-color);
   font-size: 16px;
   line-height: 19px;
@@ -63,6 +64,17 @@
 
 .login-form__reg:hover {
   text-decoration: none;
+}
+
+.login-form__error-text {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FF0000;
+}
+
+.input--error .MuiInputLabel-root.Mui-focused {
+  color: #FF0000 !important;
 }
 
 @media (max-width: 1000px) {

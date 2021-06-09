@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
+import startOfMonth from 'date-fns/startOfMonth';
 
 import { withStyles } from '@material-ui/core/styles';
 import {KeyboardDatePicker} from '@material-ui/pickers';
@@ -40,7 +41,7 @@ const DateInput = ({
           id={id}
           label={label}
           value={value}
-          minDate={new Date()}
+          minDate={startOfMonth(new Date())}
           onChange={handleDateChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',

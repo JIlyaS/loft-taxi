@@ -61,7 +61,7 @@ Select.propTypes = {
   value: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   list: PropTypes.array.isRequired,
-  iconStart: PropTypes.element,
+  iconStart: PropTypes.any,
   onChange: PropTypes.func.isRequired,
 };
 

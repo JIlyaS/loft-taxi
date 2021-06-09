@@ -26,7 +26,7 @@ const CarList = ({ carList }) => {
     <div className="car-list" data-testid="car-list">
       {
         carList.map((car) => (
-          <Fragment>
+          <Fragment key={car.type}>
             <input
               className="car-list__radio"
               type="radio" 

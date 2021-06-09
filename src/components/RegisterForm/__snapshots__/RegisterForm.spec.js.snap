@@ -6,6 +6,7 @@ exports[`RegisterForm renders correctly spanshot 1`] = `
   data-testid="register-form"
 >
   <form
+    noValidate={true}
     onSubmit={[Function]}
   >
     <h2
@@ -42,6 +43,7 @@ exports[`RegisterForm renders correctly spanshot 1`] = `
             aria-invalid={false}
             autoFocus={true}
             className="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense"
+            defaultValue=""
             disabled={false}
             id="email"
             name="email"
@@ -52,11 +54,13 @@ exports[`RegisterForm renders correctly spanshot 1`] = `
             placeholder="mail@mail.ru"
             required={true}
             type="email"
-            value=""
           />
         </div>
       </div>
     </div>
+    <span
+      className="register-form__error-text"
+    />
     <div
       className="input register-form__block"
     >
@@ -86,6 +90,7 @@ exports[`RegisterForm renders correctly spanshot 1`] = `
             aria-invalid={false}
             autoFocus={false}
             className="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense"
+            defaultValue=""
             disabled={false}
             id="name"
             name="name"
@@ -96,11 +101,13 @@ exports[`RegisterForm renders correctly spanshot 1`] = `
             placeholder="Петр Александрович"
             required={true}
             type="text"
-            value=""
           />
         </div>
       </div>
     </div>
+    <span
+      className="register-form__error-text"
+    />
     <div
       className="input register-form__block"
     >
@@ -113,7 +120,7 @@ exports[`RegisterForm renders correctly spanshot 1`] = `
           htmlFor="password"
           id="password-label"
         >
-          Пароль
+          Придумайте пароль
           <span
             aria-hidden={true}
             className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -130,6 +137,7 @@ exports[`RegisterForm renders correctly spanshot 1`] = `
             aria-invalid={false}
             autoFocus={false}
             className="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense"
+            defaultValue=""
             disabled={false}
             id="password"
             name="password"
@@ -140,14 +148,16 @@ exports[`RegisterForm renders correctly spanshot 1`] = `
             placeholder="************"
             required={true}
             type="password"
-            value=""
           />
         </div>
       </div>
     </div>
+    <span
+      className="register-form__error-text"
+    />
     <button
-      className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-2 MuiButton-contained register-form__login-btn MuiButton-containedPrimary MuiButton-disableElevation Mui-disabled WithStyles(ForwardRef(Button))-disabled-3 MuiButton-fullWidth Mui-disabled"
-      disabled={true}
+      className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-2 MuiButton-contained register-form__login-btn MuiButton-containedPrimary MuiButton-disableElevation MuiButton-fullWidth"
+      disabled={false}
       onBlur={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
@@ -159,7 +169,7 @@ exports[`RegisterForm renders correctly spanshot 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      tabIndex={-1}
+      tabIndex={0}
       type="submit"
     >
       <span

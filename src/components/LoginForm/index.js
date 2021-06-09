@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -28,47 +28,52 @@ const CssButton = withStyles({
 })(Button);
 
 const LoginForm = ({isLoadingLogin, fetchLoginRequestAction}) => {
-  // const disabledLoginBtn = !email || !password || isLoadingLogin;
 
-  const { register, handleSubmit } = useForm();
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const handleLoginSubmit = (data) => {
-  console.log("🚀 ~ file: index.js ~ line 32 ~ handleLoginSubmit ~ data", data)
-    const { email, password } = data;  
+    const { email, password } = data; 
     fetchLoginRequestAction({email, password});
   };
 
   return (
     <div className="login-form" data-testid="login-form">
-      <form onSubmit={handleSubmit(handleLoginSubmit)}>
+      <form noValidate onSubmit={handleSubmit(handleLoginSubmit)}>
         <h2 className="login-form__title">Войти</h2>
         <Input 
           type="email"
           name="email" 
           label="Email" 
           placeholder="mail@mail.ru"
-          // value={email} 
           register={register}
+          validate={{
+            required: true
+          }}
           classNameWrap="login-form__block"
           disabled={isLoadingLogin}
-          // onChange={(evt) => setEmail(evt.target.value)}
+          isError={errors.email?.type}
           isAutofocus
           isRequired
         />
+        <span className="login-form__error-text">{errors.email?.type === 'required' && 'Введите email'}</span>
         <Input 
           type="password"
           name="password" 
           label="Пароль" 
           placeholder="************"
-          // value={password} 
           register={register}
+          validate={{
+            required: true, minLength: 6
+          }}
           classNameWrap="login-form__block"
-          disabled={isLoadingLogin} 
-          // onChange={(evt) => setPassword(evt.target.value)}
+          disabled={isLoadingLogin}
+          isError={errors.password?.type}
           isRequired
         />
+        <span className="login-form__error-text">
+          {errors.password?.type === 'required' && 'Введите пароль'}
+          {errors.password?.type === 'minLength' && 'Пароль должен содержать минимум 6 символов'}
+        </span>
         <div className="login-form__link-block">
           <a className="login-form__forget-pass" href="/">Забыли пароль?</a>
         </div>

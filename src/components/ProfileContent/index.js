@@ -37,7 +37,7 @@ const ProfileContent = ({isUpdateSuccess, isLoadingViewCard, resetSuccessCardAct
         }
       </p>
       <div className="profile-content__block">
-        {isUpdateSuccess ? <CssButton 
+        {isUpdateSuccess ? <div className="profile-content__block-btn"><CssButton 
           className="profile-content__to-cart" 
           type="button" 
           variant="contained" 
@@ -47,7 +47,7 @@ const ProfileContent = ({isUpdateSuccess, isLoadingViewCard, resetSuccessCardAct
           fullWidth
         >
           Перейти на карту
-        </CssButton> : <ProfileForm />}
+        </CssButton></div> : <ProfileForm />}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input renders correctly snapshot 1`] = `
+exports[`ControlledInput renders correctly snapshot 1`] = `
 <div
   className="input"
 >
@@ -16,7 +16,6 @@ exports[`Input renders correctly snapshot 1`] = `
         aria-invalid={false}
         autoFocus={false}
         className="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense"
-        defaultValue=""
         disabled={false}
         id=""
         name=""
@@ -27,6 +26,7 @@ exports[`Input renders correctly snapshot 1`] = `
         placeholder=""
         required={false}
         type="text"
+        value=""
       />
     </div>
   </div>

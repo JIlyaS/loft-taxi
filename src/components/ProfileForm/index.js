@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
+import { useForm, Controller } from 'react-hook-form';
 
 import Input from '../Input';
+import ControlledInput from '../ControlledInput';
 import DateInput from '../DateInput';
 import Card from '../Card';
 import Loader from '../Loader';
@@ -34,31 +36,35 @@ const ProfileForm = ({
   fetchGetCardRequestAction, 
   fetchSetCardRequestAction 
 }) => {
+  const { register, handleSubmit, control, setValue, formState: { errors } } = useForm();
+
   const initExpiryDate = currentCard.expiryDate ? new Date(currentCard.expiryDate) : new Date();
   const initCardNumber = currentCard.cardNumber ? currentCard.cardNumber : '';
   const initCardName = currentCard.cardName ? currentCard.cardName : '';
   const initCVC = currentCard.cvc ? currentCard.cvc : '';
-  
-  const [cardNumber, setCardNumber] = useState(initCardNumber);
-  const [cardName, setCardName] = useState(initCardName);
-  const [cvc, setCVC] = useState(initCVC);
+
   const [expiryDate, setExpiryDate] = useState(initExpiryDate);
 
   useEffect(() => {
     fetchGetCardRequestAction();
   }, []);
 
-  const handleNumberCardChange = (evt) => {
-    if (evt.target.value.length < 20) {
-      setCardNumber(evt.target.value);
+  useEffect(() => {
+    if (currentCard) {
+      console.log("🚀 ~ file: index.js ~ line 54 ~ useEffect ~ currentCard", currentCard)
+      setValue( 'name', currentCard.cardName );
+      setValue( 'card', currentCard.cardNumber );
+      setValue( 'cvc', currentCard.cvc );
     }
-  };
-  const handleProfileSubmit = (evt) => {
-    evt.preventDefault();
+  }, [currentCard]);
+
+  const handleProfileSubmit = (data) => {
+  console.log("🚀 ~ file: index.js ~ line 62 ~ handleProfileSubmit ~ data", data)
+    const { card, name, cvc } = data;
     const formData = {
-      cardNumber,
+      cardNumber: card,
       expiryDate,
-      cardName,
+      cardName: name,
       cvc,
     };
     fetchSetCardRequestAction(formData);
@@ -70,60 +76,141 @@ const ProfileForm = ({
 
   return (
     <div className="profile-form" data-testid="profile-form">
-      <form onSubmit={handleProfileSubmit}>
+      <form noValidate onSubmit={handleSubmit(handleProfileSubmit)}>
         <div className="profile-form__wrap">
           <div className="profile-form__left-block">
-            <Input 
+            {/* <Input 
               type="text"
               name="name" 
               label="Имя владельца" 
               placeholder="USER NAME"
-              value={cardName}
-              classNameWrap="profile-form__block profile-form__block--mb10" 
+              classNameWrap="profile-form__block" 
               disabled={isLoadingUpdateCard}
-              onChange={(evt) => setCardName(evt.target.value)}
+              defaultValue={initCardName}
+              isError={errors.name?.type}
               isAutofocus
               isRequired
+            /> */}
+            <Controller
+              control={control}
+              name="name"
+              render={({ field: { onChange, value } }) => (
+                <ControlledInput 
+                  type="text"
+                  name="name" 
+                  label="Имя владельца" 
+                  placeholder="USER NAME"
+                  classNameWrap="profile-form__block" 
+                  disabled={isLoadingUpdateCard}
+                  value={value}
+                  onChange={onChange}
+                  // defaultValue={initCardName}
+                  isError={errors.name?.type}
+                  isAutofocus
+                  isRequired
+                />
+              )}
             />
-            <Input 
+            <span className="profile-form__error-text">
+              {errors.name?.type === 'required' && 'Введите имя владельца'}
+            </span>
+            <Controller
+              control={control}
+              name="card"
+              render={({ field: { onChange, value } }) => (
+                <ControlledInput 
+                  type="text"
+                  name="card"
+                  label="Номер карты" 
+                  placeholder="1111 1111 1111 1111"
+                  classNameWrap="profile-form__block" 
+                  disabled={isLoadingUpdateCard}
+                  value={value}
+                  onChange={onChange}
+                  // defaultValue={initCardNumber}
+                  isError={errors.card?.type}
+                  isRequired
+                />
+              )}
+            />
+            {/* <Input 
               type="text"
               name="card" 
               label="Номер карты" 
               placeholder="1111 1111 1111 1111"
-              value={cardNumber} 
               disabled={isLoadingUpdateCard}
               classNameWrap="profile-form__block" 
-              onChange={(evt) => handleNumberCardChange(evt)}
+              defaultValue={initCardNumber}
+              register={register}
+              validate={{
+                required: true,
+                maxLength: 20
+              }}
+              isError={errors.card?.type}
               isRequired
-            />
+            /> */}
+            <span className="profile-form__error-text">
+              {errors.card?.type === 'required' && 'Введите номер карты'}
+              {errors.card?.type === 'maxLength' && ' Номер карты не может быть больше 16 символов'}
+            </span>
             <div className="profile-form__width">
-              <DateInput
-                type="date"
-                id="date-picker"
-                name="date"
-                placeholder="MM/YY"
-                label="MM/YY"
-                value={expiryDate}
-                disabled={isLoadingUpdateCard}
-                setSelectedDate={setExpiryDate}
-                classNameWrap="profile-form__block profile-form__block--width" 
-                isRequired
-              />
-              <Input 
-                type="password"
-                name="cvc" 
-                label="CVC" 
-                placeholder="667"
-                value={cvc} 
-                disabled={isLoadingUpdateCard}
-                classNameWrap="profile-form__block profile-form__block--width" 
-                onChange={(evt) => setCVC(evt.target.value)}
-                isRequired
-              />
+              <div className="profile-form__input-block">
+                <DateInput
+                  type="date"
+                  id="date-picker"
+                  name="date"
+                  placeholder="MM/YY"
+                  label="MM/YY"
+                  value={expiryDate}
+                  disabled={isLoadingUpdateCard}
+                  setSelectedDate={setExpiryDate}
+                  defaultValue={initCardNumber}
+                  classNameWrap="profile-form__block profile-form__block--width" 
+                  isRequired
+                />
+              </div>
+              <div className="profile-form__input-block">
+
+                <Controller
+                  control={control}
+                  name="cvc"
+                  render={({ field: { onChange, value } }) => (
+                    <ControlledInput 
+                      type="text"
+                      name="cvc"
+                      label="CVC" 
+                      placeholder="667"
+                      classNameWrap="profile-form__block profile-form__block--width" 
+                      disabled={isLoadingUpdateCard}
+                      value={value}
+                      onChange={onChange}
+                      // defaultValue={initCVC}
+                      isError={errors.cvc?.type}
+                      isRequired
+                    />
+                  )}
+                />
+                {/* <Input 
+                      type="password"
+                      name="cvc" 
+                      label="CVC" 
+                      placeholder="667"
+                      defaultValue={initCVC}
+                      register={register}
+                      validate={{
+                        required: true
+                      }}
+                      isError={errors.cvc?.type}
+                      disabled={isLoadingUpdateCard}
+                      classNameWrap="profile-form__block profile-form__block--width" 
+                      isRequired
+                    /> */}
+                <span className="profile-form__error-text">{errors.cvc?.type === 'required' && 'Введите cvc'}</span>
+              </div>
             </div>
           </div>
           <div className="profile-form__right-block">
-            <Card date={expiryDate} numberCard={cardNumber} />
+            <Card date={expiryDate} numberCard={initCardNumber} />
           </div>
         </div>
         <div className="profile-form__block-btn">
